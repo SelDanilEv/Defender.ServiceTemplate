@@ -13,7 +13,6 @@ import {
 } from '@mui/material';
 import { useRef, useState } from 'react';
 import { connect } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import { styled } from '@mui/material/styles';
 import ExpandMoreTwoToneIcon from '@mui/icons-material/ExpandMoreTwoTone';
@@ -22,6 +21,7 @@ import LockOpenTwoToneIcon from '@mui/icons-material/LockOpenTwoTone';
 
 import UserService from 'src/services/UserService';
 import { logout } from "src/actions/authActions";
+import useUtils from 'src/appUtils';
 
 const UserBoxButton = styled(Button)(
   ({ theme }) => `
@@ -59,10 +59,9 @@ const UserBoxDescription = styled(Typography)(
 );
 
 const HeaderUserbox = (props: any) => {
-
   const user = UserService.FromAuthUserToUser(props.auth.user);
 
-  let navigate = useNavigate();
+  let u = useUtils();
 
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -77,7 +76,7 @@ const HeaderUserbox = (props: any) => {
 
   const Logout = () => {
     props.logout();
-    navigate("/");
+    u.react.navigate("/");
   }
 
   return (
@@ -122,12 +121,12 @@ const HeaderUserbox = (props: any) => {
         <List sx={{ p: 1 }} component="nav">
           <ListItem button to="/profile/details" component={NavLink}>
             <AccountBoxTwoToneIcon fontSize="small" />
-            <ListItemText primary="My Profile" />
+            <ListItemText primary={u.t("sidebar_header_menu_profile")} />
           </ListItem>
           <Divider />
           <ListItem button onClick={() => Logout()}>
             <LockOpenTwoToneIcon fontSize="medium" />
-            <ListItemText primary="Sign out" />
+            <ListItemText primary={u.t("sidebar_header_menu_logout")} />
           </ListItem>
         </List>
       </Popover>

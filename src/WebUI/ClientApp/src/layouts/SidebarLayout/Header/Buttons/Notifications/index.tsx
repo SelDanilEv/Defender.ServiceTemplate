@@ -15,6 +15,7 @@ import NotificationsActiveTwoToneIcon from '@mui/icons-material/NotificationsAct
 import { styled } from '@mui/material/styles';
 
 import Notification from "./Notification";
+import useUtils from 'src/appUtils';
 
 
 const NotificationsBadge = styled(Badge)(
@@ -42,6 +43,8 @@ const NotificationsBadge = styled(Badge)(
 );
 
 function HeaderNotifications() {
+  const u = useUtils();
+
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
 
@@ -91,12 +94,12 @@ function HeaderNotifications() {
           alignItems="center"
           justifyContent="space-between"
         >
-          <Typography variant="h5">Notifications</Typography>
+          <Typography variant="h5">{u.t("sidebar_header_menu_title_notification")}</Typography>
         </Box>
         <Divider />
         <List sx={{ p: 0 }}>
           {
-            notificationList.length == 0 && "No new notifications"
+            notificationList.length == 0 && u.t("sidebar_header_menu_no_notifications")
           }
           {
             notificationList.map((element, i) => {

@@ -6,15 +6,18 @@ import stateLoader from "./StateLoader";
 
 import auth from "src/reducers/authReducer";
 import loading from "src/reducers/loadingReducer";
+import app from "src/reducers/appReducer";
 
 export default legacy_createStore(
     combineReducers(
         {
             auth,
-            loading
+            loading,
+            app,
         }),
     stateLoader.loadState(),
     applyMiddleware(
-        // createLogger(), comment for production
+        createLogger(),
+        //comment for production
         thunk),
 );

@@ -3,16 +3,18 @@ import { Provider } from "react-redux";
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import { CssBaseline } from '@mui/material';
-import { ToastContainer } from 'react-toastify';
 
 import stateLoader from 'src/state/StateLoader';
 import store from "src/state/store";
 import LoadingBar from 'src/components/LoadingBar/LoadingBar';
+import AppToastContainer from 'src/components/ToastContainer';
 import ThemeProvider from 'src/theme/ThemeProvider';
 import router from 'src/router';
 
 import 'src/custom.css'
 import 'react-toastify/dist/ReactToastify.css';
+
+import "src/services/i18n";
 
 
 function App() {
@@ -26,18 +28,7 @@ function App() {
     <Provider store={store}>
       <ThemeProvider>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme='dark'
-          />
+          <AppToastContainer />
           <LoadingBar />
           <CssBaseline />
           {content}

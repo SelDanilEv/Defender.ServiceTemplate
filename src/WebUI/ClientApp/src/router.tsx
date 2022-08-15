@@ -85,7 +85,17 @@ const routes: RouteObject[] = [
     element: <SidebarLayout />,
     children: [
       {
-        path: 'configuration',
+        path: '*',
+        element: <Status404 />
+      }
+    ]
+  },
+  {
+    path: 'configuration',
+    element: <SidebarLayout />,
+    children: [
+      {
+        path: '',
         element: <Configuration />
       },
       {

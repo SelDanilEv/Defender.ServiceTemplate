@@ -13,6 +13,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import UserService from 'src/services/UserService';
 
 import MenuItem from './MenuItem';
+import useUtils from 'src/appUtils';
 
 
 const SubMenuWrapper = styled(Box)(
@@ -137,12 +138,10 @@ const SubMenuWrapper = styled(Box)(
 );
 
 const RoleBasedMenu = (props: any) => {
+  const u = useUtils();
 
   const RenderMenu = () => {
     let result = [];
-
-    console.log("props.role");
-    console.log(props.role);
 
     switch (props.role) {
       case "Super Admin":
@@ -152,13 +151,13 @@ const RoleBasedMenu = (props: any) => {
             component="div"
             subheader={
               <ListSubheader component="div" disableSticky>
-                Super Admin
+                {u.t("sidebar_menu_header_super_admin")}
               </ListSubheader>
             }
           >
             <SubMenuWrapper>
               <List component="div">
-                <MenuItem to="/home/configuration" icon={<AdminPanelSettingsIcon />} text="Configuration" />
+                <MenuItem to="/configuration" icon={<AdminPanelSettingsIcon />} text={u.t("sidebar_menu_page_configuration")} />
               </List>
             </SubMenuWrapper>
           </List>
@@ -170,13 +169,13 @@ const RoleBasedMenu = (props: any) => {
             component="div"
             subheader={
               <ListSubheader component="div" disableSticky>
-                Admin
+                {u.t("sidebar_menu_header_admin")}
               </ListSubheader>
             }
           >
             <SubMenuWrapper>
               <List component="div">
-                <MenuItem to="/" icon={<TableChartTwoToneIcon />} text="Admin" />
+                <MenuItem to="/" icon={<TableChartTwoToneIcon />} text={u.t("sidebar_menu_page_admin")} />
               </List>
             </SubMenuWrapper>
           </List>
@@ -188,22 +187,19 @@ const RoleBasedMenu = (props: any) => {
             component="div"
             subheader={
               <ListSubheader component="div" disableSticky>
-                Home
+                {u.t("sidebar_menu_header_home")}
               </ListSubheader>
             }
           >
             <SubMenuWrapper>
               <List component="div">
-                <MenuItem to="/home" icon={<HomeIcon />} text="Home page" />
+                <MenuItem to="/home" icon={<HomeIcon />} text={u.t("sidebar_menu_page_home")} />
               </List>
             </SubMenuWrapper>
           </List>
         )
         break;
     }
-
-    console.log("result");
-    console.log(result);
 
     return result;
   }

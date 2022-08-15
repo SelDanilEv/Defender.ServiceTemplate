@@ -1,9 +1,11 @@
 import Label from 'src/components/Label';
+import useUtils from 'src/appUtils';
 
 const SuperAdminRoleLable = (props: any) => {
+    const u = useUtils();
 
     return (
-        <Label color="error">Super Admin</Label>
+        <Label color="error">{u.t("role_super_admin")}</Label>
     );
 }
 

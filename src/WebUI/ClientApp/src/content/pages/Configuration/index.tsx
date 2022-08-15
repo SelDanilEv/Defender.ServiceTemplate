@@ -8,13 +8,15 @@ import {
 
 import HealthCheck from './HealthCheck';
 import Configuration from './Configuration';
+import useUtils from 'src/appUtils';
 
 const Home = (props: any) => {
+    const u = useUtils()
 
     return (
         <Grid sx={{ p: "5%" }}>
             <Box pb={2}>
-                <Typography variant="h2">Service status</Typography>
+                <Typography variant="h2">{u.t("configuration_page_title")}</Typography>
             </Box>
             <Card>
                 <List>

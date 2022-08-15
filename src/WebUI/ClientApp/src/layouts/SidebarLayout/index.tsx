@@ -1,6 +1,5 @@
 import { FC, ReactNode, useEffect } from 'react';
 import { Box, alpha, lighten, useTheme } from '@mui/material';
-import { useNavigate } from "react-router-dom";
 import { connect } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
@@ -11,6 +10,7 @@ import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
 import { logout } from 'src/actions/authActions';
 import ErrorToast from 'src/components/Toast/DefaultErrorToast';
 import apiUrls from 'src/api/apiUrls';
+import useUtils from 'src/appUtils';
 
 
 interface SidebarLayoutProps {
@@ -18,8 +18,8 @@ interface SidebarLayoutProps {
 }
 
 const SidebarLayout: FC<SidebarLayoutProps> = (props: any) => {
-  const theme = useTheme();
-  const navigate = useNavigate();
+  const u = useUtils();
+  const theme = u.react.theme;
 
   useEffect(() => {
 
@@ -33,7 +33,7 @@ const SidebarLayout: FC<SidebarLayoutProps> = (props: any) => {
           if (response.status == 401) {
             ErrorToast(response.statusText);
             props.logout();
-            navigate("/");
+            u.react.navigate("/");
           }
         }
       }

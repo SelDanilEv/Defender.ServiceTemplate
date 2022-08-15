@@ -1,6 +1,14 @@
 import { toast } from "react-toastify";
+import LocalizationService from "src/services/LocalizationService";
+import translate from "translate";
 
-const ErrorToast = (message: string) => {
+const ErrorToast = async (message: string) => {
+    const language = LocalizationService.GetCurrentLanguage();
+
+    if (language != "en") {
+        message = await translate(message, language);
+    }
+
     return toast.error(message, {
         position: "top-right",
         autoClose: 5000,
@@ -12,5 +20,6 @@ const ErrorToast = (message: string) => {
     });
 }
 
-export default ErrorToast
+
+export default ErrorToast;
 

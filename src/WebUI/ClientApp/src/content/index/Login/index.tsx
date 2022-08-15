@@ -1,5 +1,4 @@
 import { Box, Container, Grid, Typography, Avatar } from '@mui/material';
-import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { useGoogleLogin } from '@react-oauth/google';
 import { styled } from '@mui/material/styles';
@@ -11,6 +10,7 @@ import ErrorToast from 'src/components/Toast/DefaultErrorToast';
 import config from 'src/config.json';
 import { login } from "src/actions/authActions";
 import apiUrls from 'src/api/apiUrls';
+import useUtils from 'src/appUtils';
 
 const TypographyH1 = styled(Typography)(
   ({ theme }) => `
@@ -47,7 +47,7 @@ const Login = (props: any) => {
 
   let googleResponseTimeout;
 
-  const navigate = useNavigate();
+  const u = useUtils();
 
   const loginGoogle = useGoogleLogin({
     onSuccess: tokenResponse => googleResponse(tokenResponse),
@@ -99,12 +99,12 @@ const Login = (props: any) => {
 
           props.login(authState);
 
-          navigate("/home")
+          u.react.navigate("/home")
         },
         onFailure: async (response) => {
           if (response.status == 401) {
             props.logout();
-            navigate("/");
+            u.react.navigate("/");
           }
         },
         onFinal: async () => {
@@ -139,7 +139,7 @@ const Login = (props: any) => {
             variant="outlined"
             onClick={login}
           >
-            <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>Sign in with&nbsp;</Box>
+            <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>{u.t("login_page_sign_in")}&nbsp;</Box>
             <GLetter
               style={{
                 marginRight: "1px"

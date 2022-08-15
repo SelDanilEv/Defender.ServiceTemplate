@@ -5,16 +5,20 @@ import {
     ListItemText,
     MenuItem,
     TextField,
-    useTheme,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
 import PendingStatus from 'src/components/Label/StatusLabels/Pending';
 import apiUrls from 'src/api/apiUrls';
+import useUtils from 'src/appUtils';
+
 
 const Configuration = (props: any) => {
-    const theme = useTheme();
+
+    const u = useUtils();
+
+    const theme = u.react.theme;
 
     const [configuration, setConfiguration]: any = useState();
 
@@ -37,7 +41,7 @@ const Configuration = (props: any) => {
     const renderConfiguration = () => {
         if (!configuration) {
             return <Grid item xs={12} sm={12} md={12} textAlign="center">
-                <PendingStatus text="Pending" />
+                <PendingStatus text={u.t("Pending")} />
             </Grid>
         }
 
@@ -45,7 +49,7 @@ const Configuration = (props: any) => {
 
         if (envVariables.length == 0) {
             return <Grid item xs={12} sm={12} md={12} textAlign="center">
-                <PendingStatus text="No data" />
+                <PendingStatus text={u.t("NoData")} />
             </Grid>
         }
 
@@ -104,15 +108,14 @@ const Configuration = (props: any) => {
                 <Grid item xs={6} sm={7} md={8} >
                     <ListItemText
                         primaryTypographyProps={{ variant: 'h5', gutterBottom: true, fontSize: theme.typography.pxToRem(15) }}
-                        primary="Configuration" />
-
+                        primary={u.t("configuration_page_configuration")} />
                 </Grid>
 
                 <Grid item xs={6} sm={5} md={4}>
                     <TextField
                         select
                         fullWidth
-                        label="Configuration level"
+                        label={u.t("configuration_page_configuration_level")}
                         value={configurationLevel}
                         onChange={handleChange}>
                         {configurationLevels.map((option) => (

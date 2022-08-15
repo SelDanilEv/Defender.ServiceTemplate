@@ -2,7 +2,6 @@ import {
     Grid,
     ListItem,
     ListItemText,
-    useTheme,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 
@@ -11,9 +10,13 @@ import PendingStatus from 'src/components/Label/StatusLabels/Pending';
 import SuccessStatus from 'src/components/Label/StatusLabels/Success';
 import ErrorStatus from 'src/components/Label/StatusLabels/Error';
 import apiUrls from 'src/api/apiUrls';
+import useUtils from 'src/appUtils';
+
 
 const HealthCheck = (props: any) => {
-    const theme = useTheme();
+    const u = useUtils();
+
+    const theme = u.react.theme;
 
     const [healthCheck, setHealthCheck]: any = useState();
 
@@ -39,11 +42,11 @@ const HealthCheck = (props: any) => {
     const isHealthy = () => {
         switch (healthCheck) {
             case undefined:
-                return <PendingStatus text="Pending" />;
+                return <PendingStatus text={u.t("Pending")} />;
             case true:
-                return <SuccessStatus text="Healthy" />;
+                return <SuccessStatus text={u.t("Healthy")} />;
             case false:
-                return <ErrorStatus text="Unhealthy" />;
+                return <ErrorStatus text={u.t("Unhealthy")} />;
         }
     }
 
@@ -51,7 +54,7 @@ const HealthCheck = (props: any) => {
         <ListItem sx={{ p: 3 }} key="HealthCheck">
             <ListItemText
                 primaryTypographyProps={{ variant: 'h5', gutterBottom: true, fontSize: theme.typography.pxToRem(15) }}
-                primary="API status"
+                primary={u.t("configuration_page_api_status")}
             />
             <Grid item xs={12} sm={8} md={9}>
                 {isHealthy()}

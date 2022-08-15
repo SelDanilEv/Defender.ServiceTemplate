@@ -8,12 +8,6 @@ import { NavLink as RouterLink } from 'react-router-dom';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
 
-const SubMenuItem = styled(ListItem)(
-  ({ theme }) => `
-  font-size: ${theme.typography.pxToRem(10)};
-`
-);
-
 const MenuItem = (props: any) => {
   const { closeSidebar } = useContext(SidebarContext);
 

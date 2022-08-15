@@ -1,17 +1,19 @@
 import React from 'react';
 import { FC } from 'react';
 import PropTypes from 'prop-types';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { connect } from 'react-redux';
 
+import useUtils from 'src/appUtils';
+
+
 const BaseLayout: FC = (props: any) => {
-  const navigate = useNavigate();
+  const u = useUtils();
 
   React.useEffect(() => {
-
     if (props.auth.isAuthenticated) {
-      navigate("/home")
+      u.react.navigate("/home")
     }
   }, []);
 

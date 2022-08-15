@@ -24,7 +24,7 @@ public class HomeController : BaseApiController
     }
 
     [HttpGet("authorization/check")]
-    [Auth(Roles.User)]
+    [Auth(Roles.Any)]
     [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]

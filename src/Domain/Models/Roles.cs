@@ -5,5 +5,5 @@ public static class Roles
     public const string Admin = "Admin";
     public const string SuperAdmin = "SuperAdmin";
 
-    public const string All = "SuperAdmin,Admin,User";
+    public const string Any = "SuperAdmin,Admin,User";
 }
