@@ -38,13 +38,16 @@ public class HomeController : BaseApiController
     [ProducesResponseType(typeof(Dictionary<string, string>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<Dictionary<string, string>> GetConfigurationAsync(ConfigurationLevel configurationLevel)
+    public async Task<Dictionary<string, string>> GetConfigurationAsync(
+        ConfigurationLevel configurationLevel)
     {
         var query = new GetConfigurationQuery()
         {
             Level = configurationLevel
         };
 
-        return await ProcessApiCallWithoutMappingAsync<GetConfigurationQuery, Dictionary<string, string>>(query);
+        return await ProcessApiCallWithoutMappingAsync
+            <GetConfigurationQuery, Dictionary<string, string>>
+            (query);
     }
 }

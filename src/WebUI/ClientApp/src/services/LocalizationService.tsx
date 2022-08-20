@@ -1,5 +1,6 @@
 import i18next from "i18next";
 
+
 const LocalizationService = {
     Languages: [
         { key: "en", value: "EN" },

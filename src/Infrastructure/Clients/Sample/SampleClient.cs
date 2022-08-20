@@ -1,6 +1,6 @@
-﻿using Defender.ServiceTemplate.Application.Common.Exceptions;
+﻿using System.Net.Http.Headers;
+using Defender.ServiceTemplate.Application.Common.Exceptions;
 using Defender.ServiceTemplate.Application.Models.Sample;
-using Defender.ServiceTemplate.Domain.Entities.User;
 using Defender.ServiceTemplate.Infrastructure.Clients.Interfaces;
 using Newtonsoft.Json;
 
@@ -25,7 +25,7 @@ public partial class SampleClient : ISampleClient
             using (var request = new HttpRequestMessage())
             {
                 request.Method = new HttpMethod("GET");
-                request.Headers.Accept.Add(System.Net.Http.Headers.MediaTypeWithQualityHeaderValue.Parse("application/json"));
+                request.Headers.Accept.Add(MediaTypeWithQualityHeaderValue.Parse("application/json"));
 
                 request.RequestUri = new Uri(url, UriKind.RelativeOrAbsolute);
 
@@ -41,7 +41,9 @@ public partial class SampleClient : ISampleClient
                     }
                     catch (JsonSerializationException exception)
                     {
-                        var message = "Could not deserialize the response body string as " + typeof(SampleResponse).FullName + ".";
+                        var message = 
+                            "Could not deserialize the response body string as " +
+                            typeof(SampleResponse).FullName + ".";
                         throw new InvalidCastException(message);
                     }
                 }

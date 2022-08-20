@@ -1,14 +1,11 @@
 import { connect } from "react-redux";
 
-import useUtils from 'src/appUtils';
 import LocalizationService from "src/services/LocalizationService";
 import LockedSelect from 'src/components/LockedComponents/LockedSelect/LockedSelect';
 import { updateLanguage } from 'src/actions/appAction';
 
 
 const LanguageSwitcher = (props: any) => {
-  const u = useUtils();
-
   const languages = LocalizationService.Languages;
 
   return (

@@ -1,10 +1,10 @@
 import {
     Button,
-    useTheme,
     styled,
 } from '@mui/material';
 
 import CustomButtonProps from '../Interface';
+
 
 const RedButton = styled(Button)(
     ({ theme }) => `
@@ -18,8 +18,6 @@ const RedButton = styled(Button)(
 );
 
 const ButtonError = ({ text, ...props }: CustomButtonProps) => {
-    const theme = useTheme();
-
     props.variant = "contained"
 
     return (

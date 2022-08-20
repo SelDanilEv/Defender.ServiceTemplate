@@ -2,11 +2,10 @@ import {
   Box,
   Badge,
   styled,
-  useTheme
 } from '@mui/material';
-import { Link } from 'react-router-dom';
 
 import config from 'src/config.json';
+
 
 const LogoWrapper = styled(Box)(
   ({ theme }) => `
@@ -47,8 +46,6 @@ const LogoInner = ({ height, width, children }) => {
 
 
 const Logo = (props: any) => {
-  const theme = useTheme();
-
   return (
     <LogoWrapper>
       <Badge

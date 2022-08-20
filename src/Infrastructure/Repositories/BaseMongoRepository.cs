@@ -1,5 +1,4 @@
 ﻿using System.Linq.Expressions;
-using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
 using Defender.ServiceTemplate.Application.Configuration.Options;
 using Defender.ServiceTemplate.Application.Enums;
 using Defender.ServiceTemplate.Application.Helpers;
@@ -63,7 +62,8 @@ public abstract class BaseMongoRepository<Model> where Model : IBaseModel, new()
     {
         return Builders<Model>.Filter.Eq(s => s.Id, id);
     }
-    protected FilterDefinition<Model> CreateFilterDefinition<TField>(Expression<Func<Model, TField>> field, TField value)
+    protected FilterDefinition<Model> CreateFilterDefinition<TField>(
+        Expression<Func<Model, TField>> field, TField value)
     {
         return Builders<Model>.Filter.Eq(field, value);
     }

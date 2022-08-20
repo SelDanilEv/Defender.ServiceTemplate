@@ -15,8 +15,10 @@ public class AuthController : BaseApiController
     [HttpPost("google")]
     [ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<LoginResponse> GenerateJWTFromGoogleAsync([FromBody] LoginGoogleCommand loginGoogleCommand)
+    public async Task<LoginResponse> GenerateJWTFromGoogleAsync(
+        [FromBody] LoginGoogleCommand loginGoogleCommand)
     {
-        return await ProcessApiCallWithoutMappingAsync<LoginGoogleCommand, LoginResponse>(loginGoogleCommand);
+        return await ProcessApiCallWithoutMappingAsync<LoginGoogleCommand, LoginResponse>
+            (loginGoogleCommand);
     }
 }

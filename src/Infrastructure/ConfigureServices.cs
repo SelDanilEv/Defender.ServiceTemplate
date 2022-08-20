@@ -15,7 +15,9 @@ namespace Defender.ServiceTemplate.Infrastructure;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -31,14 +33,18 @@ public static class ConfigureServices
 
     private static void RegisterApiClients(IServiceCollection services)
     {
-        services.AddHttpClient<ISampleClient, SampleClient>("SampleClient", (serviceProvider, client) =>
+        services.AddHttpClient<ISampleClient, SampleClient>("SampleClient", 
+            (serviceProvider, client) =>
         {
-            client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<SampleOption>>().Value.Url);
+            client.BaseAddress = new Uri(
+                serviceProvider.GetRequiredService<IOptions<SampleOption>>().Value.Url);
         });
 
-        services.AddHttpClient<IUserManagementClient, UserManagementClient>("UserManagementClient", (serviceProvider, client) =>
+        services.AddHttpClient<IUserManagementClient, UserManagementClient>("UserManagementClient",
+            (serviceProvider, client) =>
         {
-            client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<UserManagementOption>>().Value.Url);
+            client.BaseAddress = new Uri(
+                serviceProvider.GetRequiredService<IOptions<UserManagementOption>>().Value.Url);
         });
     }
 

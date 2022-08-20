@@ -21,7 +21,8 @@ public class CurrentUserService : ICurrentUserService
 
             var user = new User();
 
-            user.Id = Guid.Parse(currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
+            user.Id = Guid.Parse(
+                currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
             user.Name = currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value;
 

@@ -109,7 +109,8 @@ public static class ConfigureServices
         return services;
     }
 
-    private static void ConfigureProblemDetails(ProblemDetailsOptions options, IWebHostEnvironment environment)
+    private static void ConfigureProblemDetails(
+        ProblemDetailsOptions options, IWebHostEnvironment environment)
     {
         options.IncludeExceptionDetails = (ctx, ex) => environment.IsEnvironment("Development");
 

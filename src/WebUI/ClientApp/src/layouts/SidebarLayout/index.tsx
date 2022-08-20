@@ -1,5 +1,5 @@
 import { FC, ReactNode, useEffect } from 'react';
-import { Box, alpha, lighten, useTheme } from '@mui/material';
+import { Box, alpha, lighten } from '@mui/material';
 import { connect } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 

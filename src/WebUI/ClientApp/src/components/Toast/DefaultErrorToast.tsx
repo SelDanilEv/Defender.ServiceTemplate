@@ -1,6 +1,8 @@
 import { toast } from "react-toastify";
-import LocalizationService from "src/services/LocalizationService";
 import translate from "translate";
+
+import LocalizationService from "src/services/LocalizationService";
+
 
 const ErrorToast = async (message: string) => {
     const language = LocalizationService.GetCurrentLanguage();

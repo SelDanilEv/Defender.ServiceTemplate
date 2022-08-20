@@ -8,6 +8,7 @@ import auth from "src/reducers/authReducer";
 import loading from "src/reducers/loadingReducer";
 import app from "src/reducers/appReducer";
 
+
 export default legacy_createStore(
     combineReducers(
         {

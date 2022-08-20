@@ -1,5 +1,6 @@
 import { UserInfo } from "src/models/user_info";
 
+
 const UserService = {
     FromAuthUserToUser: (authUser: UserInfo) => {
         return {
