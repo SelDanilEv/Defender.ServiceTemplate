@@ -2,7 +2,7 @@ const AddMenu = (result) => {
     result.sidebar_menu_header_home = "Home";
     result.sidebar_menu_page_home = "Home page";
     result.sidebar_menu_header_admin = "Admin";
-    result.sidebar_menu_page_admin = "Admin";
+    result.sidebar_menu_page_users = "Users";
     result.sidebar_menu_header_super_admin = "Super Admin";
     result.sidebar_menu_page_configuration = "Configuration";
 

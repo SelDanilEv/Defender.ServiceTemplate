@@ -20,6 +20,11 @@ const Login = Loader(lazy(() => import('src/content/index')));
 
 const Configuration = Loader(lazy(() => import('src/content/pages/Configuration')));
 
+// Users
+
+const Users = Loader(lazy(() => import('src/content/pages/Users')));
+const UpdateUserPage = Loader(lazy(() => import('src/content/pages/Users/Update')));
+
 // Status
 
 const Status404 = Loader(
@@ -84,6 +89,24 @@ const routes: RouteObject[] = [
     path: 'home',
     element: <SidebarLayout />,
     children: [
+      {
+        path: '*',
+        element: <Status404 />
+      }
+    ]
+  },
+  {
+    path: 'users',
+    element: <SidebarLayout />,
+    children: [
+      {
+        path: '',
+        element: <Users />
+      },
+      {
+        path: 'edit',
+        element: <UpdateUserPage />
+      },
       {
         path: '*',
         element: <Status404 />

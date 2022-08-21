@@ -175,7 +175,7 @@ const RoleBasedMenu = (props: any) => {
           >
             <SubMenuWrapper>
               <List component="div">
-                <MenuItem to="/" icon={<TableChartTwoToneIcon />} text={u.t("sidebar_menu_page_admin")} />
+                <MenuItem to="/users" icon={<TableChartTwoToneIcon />} text={u.t("sidebar_menu_page_users")} />
               </List>
             </SubMenuWrapper>
           </List>
