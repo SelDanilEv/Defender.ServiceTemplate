@@ -1,3 +1,4 @@
+import useUtils from "src/appUtils";
 import { UserInfo } from "src/models/user_info";
 
 
@@ -26,6 +27,27 @@ const UserService = {
             role = roleList[i++]) {
             if (roles.includes(role.key)) {
                 return role.value;
+            }
+        }
+
+        return defaultRole.value;
+    },
+
+    LocalizeRole: (role: string): string => {
+        const u = useUtils();
+
+        let defaultRole = { key: "User", value: u.t("role_user") }
+        let roleList = [
+            { key: "Super Admin", value: u.t("role_super_admin") },
+            { key: "Admin", value: u.t("role_admin") },
+            defaultRole];
+
+        for (
+            let i = 0, localizedRole = {} as { key: string, value: string };
+            i < roleList.length && role;
+            localizedRole = roleList[i++]) {
+            if (role == localizedRole.key) {
+                return localizedRole.value;
             }
         }
 

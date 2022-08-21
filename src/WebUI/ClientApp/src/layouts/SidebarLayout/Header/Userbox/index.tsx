@@ -59,12 +59,14 @@ const UserBoxDescription = styled(Typography)(
 );
 
 const HeaderUserbox = (props: any) => {
-  const user = UserService.FromAuthUserToUser(props.auth.user);
-
   let u = useUtils();
 
   const ref = useRef<any>(null);
   const [isOpen, setOpen] = useState<boolean>(false);
+
+  const user = UserService.FromAuthUserToUser(props.auth.user);
+  const roleToShow =
+    UserService.LocalizeRole(user.role);
 
   const handleOpen = (): void => {
     setOpen(true);
@@ -87,7 +89,7 @@ const HeaderUserbox = (props: any) => {
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              {user.role}
+              {roleToShow}
             </UserBoxDescription>
           </UserBoxText>
         </Hidden>
@@ -113,7 +115,7 @@ const HeaderUserbox = (props: any) => {
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              {user.role}
+              {roleToShow}
             </UserBoxDescription>
           </UserBoxText>
         </MenuUserBox>

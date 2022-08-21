@@ -5,12 +5,14 @@ import { styled } from '@mui/material/styles';
 
 import LockedButton from 'src/components/LockedComponents/Buttons/LockedButton';
 import LoadingStateService from 'src/services/LoadingStateService';
+import LocalizationService from 'src/services/LocalizationService';
 import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
 import ErrorToast from 'src/components/Toast/DefaultErrorToast';
 import config from 'src/config.json';
 import { login } from "src/actions/authActions";
 import apiUrls from 'src/api/apiUrls';
 import useUtils from 'src/appUtils';
+import { useEffect, useState } from 'react';
 
 
 const TypographyH1 = styled(Typography)(
@@ -116,6 +118,12 @@ const Login = (props: any) => {
     )
   };
 
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    LocalizationService.Localize(config.APP_DESCRIPTION, setDescription)
+  }, []);
+
   return (
     <Container maxWidth="lg" sx={{ textAlign: 'center' }}>
       <Grid
@@ -134,7 +142,7 @@ const Login = (props: any) => {
             color="text.secondary"
             fontWeight="normal"
           >
-            {config.APP_DESCRIPTION}
+            {description}
           </TypographyH2>
           <LoginButton
             variant="outlined"
