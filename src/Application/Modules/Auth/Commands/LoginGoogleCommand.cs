@@ -11,7 +11,7 @@ public record LoginGoogleCommand : IRequest<LoginResponse>
     public string? Token { get; set; }
 };
 
-public sealed class LoginGoogleCommandValidator : 
+public sealed class LoginGoogleCommandValidator :
     AbstractValidator<LoginGoogleCommand>
 {
     public LoginGoogleCommandValidator()
@@ -20,7 +20,7 @@ public sealed class LoginGoogleCommandValidator :
     }
 }
 
-public sealed class LoginGoogleCommandHandler : 
+public sealed class LoginGoogleCommandHandler :
     IRequestHandler<LoginGoogleCommand, LoginResponse>
 {
     private readonly IAuthService _authService;

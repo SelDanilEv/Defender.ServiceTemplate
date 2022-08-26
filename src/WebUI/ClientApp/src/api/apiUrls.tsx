@@ -2,6 +2,9 @@ const APIEndpoints = {
   auth: {
     google: "google"
   },
+  accountinfo: {
+    update: "update"
+  },
   home: {
     healthcheck: "health",
     authcheck: "authorization/check",

@@ -1,10 +1,9 @@
-import { toast } from 'react-toastify';
-
 import APICallProps from "./interfaces/APICallProps"
 
 import store from "src/state/store"
 import LoadingStateService from "src/services/LoadingStateService"
 import ErrorToast from "src/components/Toast/DefaultErrorToast";
+import SuccessToast from 'src/components/Toast/DefaultSuccessToast';
 
 
 const APICallWrapper = async (
@@ -19,6 +18,7 @@ const APICallWrapper = async (
         showError = true,
     }: APICallProps
 ) => {
+
     try {
         LoadingStateService.StartLoading()
 
@@ -38,25 +38,17 @@ const APICallWrapper = async (
 
         switch (response.status) {
             case 200:
-                await onSuccess(response)
+                onSuccess(response)
 
                 if (showSuccess) {
-                    toast.success(successMesage, {
-                        position: "top-right",
-                        autoClose: 5000,
-                        hideProgressBar: false,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                    });
+                    SuccessToast(successMesage)
                 }
                 return
             case 401:
-                await onFailure(response)
+                onFailure(response)
                 break;
             default:
-                await onFailure(response)
+                onFailure(response)
 
                 if (showError) {
                     let error = await response.json();

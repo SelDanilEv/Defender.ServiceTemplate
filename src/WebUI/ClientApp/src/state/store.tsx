@@ -18,7 +18,7 @@ export default legacy_createStore(
         }),
     stateLoader.loadState(),
     applyMiddleware(
-        createLogger(),
+        // createLogger(),
         //comment for production
         thunk),
 );

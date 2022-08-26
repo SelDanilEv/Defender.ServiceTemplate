@@ -121,7 +121,7 @@ const HeaderUserbox = (props: any) => {
         </MenuUserBox>
         <Divider sx={{ mb: 0 }} />
         <List sx={{ p: 1 }} component="nav">
-          <ListItem button to="/profile/details" component={NavLink}>
+          <ListItem button to="/account/update" component={NavLink} onClick={handleClose}>
             <AccountBoxTwoToneIcon fontSize="small" />
             <ListItemText primary={u.t("sidebar_header_menu_profile")} />
           </ListItem>

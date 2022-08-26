@@ -7,6 +7,13 @@ const authReducer = (state = {
     isAuthenticated: false
 }, action: any) => {
     switch (action.type) {
+        case "UPDATE_USER_INFO":
+            state =
+            {
+                ...state,
+                user: action.payload
+            };
+            break;
         case "LOGIN":
             state =
             {

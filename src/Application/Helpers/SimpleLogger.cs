@@ -12,23 +12,23 @@ public static class SimpleLogger
         }
 
         Serilog.Log.Error(
-            "ERROR --- " + 
-            DateTime.Now.ToString() + 
-            " : " + 
+            "ERROR --- " +
+            DateTime.Now.ToString() +
+            " : " +
             ex.Message);
 
         Serilog.Log.Error(
             "ERROR --- " +
-            DateTime.Now.ToString() + 
-            " : " + 
+            DateTime.Now.ToString() +
+            " : " +
             ex.StackTrace);
 
         if (ex.InnerException != null)
         {
             Serilog.Log.Error(
                 "ERROR INNER --- " +
-                DateTime.Now.ToString() + 
-                " : " + 
+                DateTime.Now.ToString() +
+                " : " +
                 ex.InnerException.Message);
 
             Serilog.Log.Error(
@@ -45,9 +45,9 @@ public static class SimpleLogger
         {
             case LogLevel.Debug:
                 Serilog.Log.Debug(
-                    "DEBUG --- " + 
-                    DateTime.Now.ToString() + 
-                    " : " + 
+                    "DEBUG --- " +
+                    DateTime.Now.ToString() +
+                    " : " +
                     msg);
                 break;
             case LogLevel.Info:

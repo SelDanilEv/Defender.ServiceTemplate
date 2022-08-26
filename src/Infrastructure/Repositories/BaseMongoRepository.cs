@@ -16,7 +16,7 @@ public abstract class BaseMongoRepository<Model> where Model : IBaseModel, new()
 
     protected BaseMongoRepository(MongoDbOption mongoOption)
     {
-        mongoOption.ConnectionString = 
+        mongoOption.ConnectionString =
             String.Format(
                 mongoOption.ConnectionString,
                 EnvVariableResolver.GetEnvironmentVariable(EnvVariable.MongoDBPassword));

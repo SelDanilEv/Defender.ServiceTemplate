@@ -1,5 +1,5 @@
 const appReducer = (state = {
-  language: "EN"
+  language: "en"
 }, action: any) => {
   switch (action.type) {
     case "UPDATE_LANGUAGE":

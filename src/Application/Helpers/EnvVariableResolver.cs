@@ -6,7 +6,7 @@ public static class EnvVariableResolver
 {
     private const string EnvironmentVariablePrefix = "Defender_App_";
 
-    private static readonly Dictionary<string, string> _environmentVariables = 
+    private static readonly Dictionary<string, string> _environmentVariables =
         new Dictionary<string, string>();
 
     public static string GetEnvironmentVariable(EnvVariable envVariable)
@@ -29,7 +29,7 @@ public static class EnvVariableResolver
             return _environmentVariables[key];
         }
 
-        var value = 
+        var value =
             Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Process) ??
             Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.User) ??
             Environment.GetEnvironmentVariable(key, EnvironmentVariableTarget.Machine);
@@ -47,6 +47,6 @@ public static class EnvVariableResolver
         return value;
     }
 
-    private static string MapEnvVariableToKey(EnvVariable envVariable) => 
+    private static string MapEnvVariableToKey(EnvVariable envVariable) =>
         EnvironmentVariablePrefix + envVariable.ToString();
 }

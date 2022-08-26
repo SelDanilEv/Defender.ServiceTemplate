@@ -20,6 +20,10 @@ const Login = Loader(lazy(() => import('src/content/index')));
 
 const Configuration = Loader(lazy(() => import('src/content/pages/Configuration')));
 
+// Profile
+
+const AccountInfo = Loader(lazy(() => import('src/content/pages/AccountInfo')));
+
 // Users
 
 const Users = Loader(lazy(() => import('src/content/pages/Users')));
@@ -120,6 +124,20 @@ const routes: RouteObject[] = [
       {
         path: '',
         element: <Configuration />
+      },
+      {
+        path: '*',
+        element: <Status404 />
+      }
+    ]
+  },
+  {
+    path: 'account',
+    element: <SidebarLayout />,
+    children: [
+      {
+        path: 'update',
+        element: <AccountInfo />
       },
       {
         path: '*',

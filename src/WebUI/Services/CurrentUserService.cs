@@ -21,12 +21,17 @@ public class CurrentUserService : ICurrentUserService
 
             var user = new User();
 
-            user.Id = Guid.Parse(
-                currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier).Value);
+            if (Guid.TryParse(
+                currentUserClaims
+                    .FirstOrDefault(x => x.Type == ClaimTypes.NameIdentifier)?.Value,
+                out var guid))
+            {
+                user.Id = guid;
+            }
 
-            user.Name = currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.Name).Value;
+            user.Name = currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
 
-            user.Email = currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.Email).Value;
+            user.Email = currentUserClaims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
 
             user.Roles = currentUserClaims
                 .Where(x => x.Type == ClaimTypes.Role)
@@ -34,6 +39,14 @@ public class CurrentUserService : ICurrentUserService
                 .ToList();
 
             return user;
+        }
+    }
+
+    public string Token
+    {
+        get
+        {
+            return _httpContextAccessor.HttpContext?.Request.Headers.Authorization;
         }
     }
 }

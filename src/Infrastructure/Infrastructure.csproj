@@ -13,71 +13,70 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Common\" />
+        <Folder Include="Common\" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-      <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.21.0" />
-      <PackageReference Include="mongocsharpdriver" Version="2.17.0" />
-      <PackageReference Include="MongoDB.Driver" Version="2.17.0" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+        <PackageReference Include="MongoDB.Driver" Version="2.17.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy64.dll" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy64.dll" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libsnappy64.so" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libsnappy64.so" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\libzstd.dll" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\libzstd.dll" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libzstd.dylib" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libzstd.dylib" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libzstd.so" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libzstd.so" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy32.dll" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy32.dll" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy64.dll" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy64.dll" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libsnappy64.dylib" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libsnappy64.so" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libsnappy64.so" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\libzstd.dll" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\libzstd.dll" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libzstd.dylib" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\osx\native\libzstd.dylib" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libzstd.so" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\linux\native\libzstd.so" />
     </ItemGroup>
 
     <ItemGroup>
-      <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy32.dll" />
+        <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy32.dll" />
     </ItemGroup>
 
 </Project>

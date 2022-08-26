@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Net.Http.Headers;
+using System.Reflection;
 using Defender.ServiceTemplate.Application.Common.Interfaces;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
 using Defender.ServiceTemplate.Application.Configuration.Options;
@@ -21,19 +22,35 @@ public static class ConfigureServices
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        services.AddTransient<IAuthService, AuthService>();
-        services.AddTransient<ISampleService, SampleService>();
+        services.RegisterServices();
 
-        services.AddTransient<ISampleRepository, SampleRepository>();
+        services.RegisterRepositories();
 
-        RegisterApiClients(services);
+        services.RegisterApiClients();
 
         return services;
     }
 
-    private static void RegisterApiClients(IServiceCollection services)
+    private static IServiceCollection RegisterServices(this IServiceCollection services)
     {
-        services.AddHttpClient<ISampleClient, SampleClient>("SampleClient", 
+        services.AddTransient<IAuthService, AuthService>();
+        services.AddTransient<IAccountManagementService, AccountManagementService>();
+        services.AddTransient<ISampleService, SampleService>();
+
+        return services;
+    }
+
+    private static IServiceCollection RegisterRepositories(this IServiceCollection services)
+    {
+        services.AddTransient<ISampleRepository, SampleRepository>();
+
+        return services;
+    }
+
+    private static IServiceCollection RegisterApiClients(
+        this IServiceCollection services)
+    {
+        services.AddHttpClient<ISampleClient, SampleClient>("SampleClient",
             (serviceProvider, client) =>
         {
             client.BaseAddress = new Uri(
@@ -45,7 +62,16 @@ public static class ConfigureServices
         {
             client.BaseAddress = new Uri(
                 serviceProvider.GetRequiredService<IOptions<UserManagementOption>>().Value.Url);
+
+            var token = serviceProvider.GetRequiredService<ICurrentUserService>().Token;
+
+            if (!string.IsNullOrWhiteSpace(token))
+            {
+                client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(token);
+            }
         });
+
+        return services;
     }
 
 }

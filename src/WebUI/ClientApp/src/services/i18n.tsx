@@ -25,7 +25,7 @@ i18next
         interpolation: {
             escapeValue: false,
         },
-        debug: true,
+        debug: false,
         // dissable debug for production
     });
 

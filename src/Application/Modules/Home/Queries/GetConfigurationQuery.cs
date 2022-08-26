@@ -10,7 +10,7 @@ public record GetConfigurationQuery : IRequest<Dictionary<string, string>>
     public ConfigurationLevel Level { get; set; } = ConfigurationLevel.All;
 };
 
-public class GetConfigurationQueryHandler : 
+public class GetConfigurationQueryHandler :
     RequestHandler<GetConfigurationQuery, Dictionary<string, string>>
 {
     protected override Dictionary<string, string> Handle(GetConfigurationQuery request)
@@ -20,21 +20,21 @@ public class GetConfigurationQueryHandler :
         switch (request.Level)
         {
             case ConfigurationLevel.All:
-                var allProcessEnvVariables = 
+                var allProcessEnvVariables =
                     Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process);
                 foreach (DictionaryEntry envVariable in allProcessEnvVariables)
                 {
                     result.TryAdd(envVariable.Key.ToString(), envVariable.Value.ToString());
                 }
 
-                var allUserEnvVariables = 
+                var allUserEnvVariables =
                     Environment.GetEnvironmentVariables(EnvironmentVariableTarget.User);
                 foreach (DictionaryEntry envVariable in allUserEnvVariables)
                 {
                     result.TryAdd(envVariable.Key.ToString(), envVariable.Value.ToString());
                 }
 
-                var allMachineEnvVariables = 
+                var allMachineEnvVariables =
                     Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Machine);
                 foreach (DictionaryEntry envVariable in allMachineEnvVariables)
                 {
@@ -42,7 +42,7 @@ public class GetConfigurationQueryHandler :
                 }
                 break;
             case ConfigurationLevel.Admin:
-                foreach (EnvVariable envVariable in 
+                foreach (EnvVariable envVariable in
                     (EnvVariable[])Enum.GetValues(typeof(EnvVariable)))
                 {
                     result.Add(

@@ -41,7 +41,7 @@ public partial class SampleClient : ISampleClient
                     }
                     catch (JsonSerializationException exception)
                     {
-                        var message = 
+                        var message =
                             "Could not deserialize the response body string as " +
                             typeof(SampleResponse).FullName + ".";
                         throw new InvalidCastException(message);

@@ -4,7 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
-import App from 'src/App';
+import App from 'src/app/App';
 import { SidebarProvider } from 'src/contexts/SidebarContext';
 import store from "src/state/store";
 import * as serviceWorkerRegistration from 'src/serviceWorkerRegistration';

@@ -28,6 +28,19 @@ const AddConfigurationPage = (result) => {
     return result;
 }
 
+const AddPersonalInfoPage = (result) => {
+    result.personal_ingo_page_title = "User id";
+    result.personal_ingo_page_account_info = "Account info";
+    result.personal_ingo_page_save = "Save";
+    result.personal_ingo_page_name_field = "Name";
+    result.personal_ingo_page_email_field = "Email";
+    result.personal_ingo_page_created_date_field = "Created date";
+    result.personal_ingo_page_approve = "Approve";
+    result.personal_ingo_page_account_updated_message = "User info updated";
+
+    return result;
+}
+
 const AddLoginPage = (result) => {
     result.login_page_sign_in = "Sign in with";
 
@@ -36,6 +49,8 @@ const AddLoginPage = (result) => {
 
 const AddPages = (result) => {
     result = AddLoginPage(result);
+
+    result = AddPersonalInfoPage(result);
 
     result = AddConfigurationPage(result);
 

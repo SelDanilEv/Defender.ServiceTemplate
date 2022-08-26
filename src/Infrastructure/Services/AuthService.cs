@@ -22,7 +22,6 @@ public class AuthService : IAuthService
 
         var loginResponse = await _userManagementClient.GoogleAsync(command);
 
-
         return _mapper.Map<Application.Models.LoginResponse.LoginResponse>(loginResponse);
     }
 }

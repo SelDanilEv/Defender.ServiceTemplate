@@ -130,6 +130,15 @@ public static class ConfigureServices
             return problemDetails;
         });
 
+        options.Map<ExternalAPIException>(exception =>
+        {
+            var problemDetails = new ProblemDetails();
+
+            problemDetails.Detail = exception.Message;
+            problemDetails.Status = StatusCodes.Status500InternalServerError;
+            return problemDetails;
+        });
+
         options.MapToStatusCode<NotImplementedException>(StatusCodes.Status501NotImplemented);
 
         options.MapToStatusCode<HttpRequestException>(StatusCodes.Status503ServiceUnavailable);
