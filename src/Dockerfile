@@ -7,7 +7,6 @@ RUN apt-get install -f
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 
-# RUN apk add update
 RUN apk add --update nodejs npm
 
 WORKDIR /src
