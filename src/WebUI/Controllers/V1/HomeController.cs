@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Defender.ServiceTemplate.Application.Modules.Home.Queries;
 using Defender.ServiceTemplate.Application.Enums;
 using Defender.ServiceTemplate.Domain.Models;
+using Defender.ServiceTemplate.Application.DTOs;
 
 namespace Defender.ServiceTemplate.WebUI.Controllers.V1;
 
@@ -15,12 +16,12 @@ public class HomeController : BaseApiController
     }
 
     [HttpGet("health")]
-    [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(HealthDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status403Forbidden)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
-    public async Task<object> HealthCheckAsync()
+    public async Task<HealthDto> HealthCheckAsync()
     {
-        return new { Status = "Healthy" };
+        return new HealthDto { Status = "Healthy" };
     }
 
     [HttpGet("authorization/check")]
