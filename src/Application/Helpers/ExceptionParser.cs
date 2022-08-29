@@ -12,7 +12,7 @@ public static class ExceptionParser
             return messageChunks[messageChunks.IndexOf("detail") + 2];
         }
 
-        return "Validation error occurs";
+        return "Error occurs";
     }
 
 }

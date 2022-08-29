@@ -14,7 +14,7 @@ public class AccountInfoController : BaseApiController
     }
 
     [HttpPut("update")]
-    [ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<UserDto> UpdateAccountInfoAsync(
         [FromBody] UpdateAccountInfoCommand command)
