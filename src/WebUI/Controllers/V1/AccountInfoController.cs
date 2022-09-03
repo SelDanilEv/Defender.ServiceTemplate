@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Defender.ServiceTemplate.Application.Models.LoginResponse;
 using Defender.ServiceTemplate.Application.Modules.Auth.Commands;
 using Defender.ServiceTemplate.Application.DTOs;
+using Defender.ServiceTemplate.Domain.Models;
+using Defender.ServiceTemplate.WebUI.Attributes;
 
 namespace Defender.ServiceTemplate.WebUI.Controllers.V1;
 
@@ -14,6 +15,7 @@ public class AccountInfoController : BaseApiController
     }
 
     [HttpPut("update")]
+    [Auth(Roles.Any)]
     [ProducesResponseType(typeof(UserDto), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
     public async Task<UserDto> UpdateAccountInfoAsync(
