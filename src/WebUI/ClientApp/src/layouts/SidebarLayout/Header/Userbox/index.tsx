@@ -65,8 +65,8 @@ const HeaderUserbox = (props: any) => {
   const [isOpen, setOpen] = useState<boolean>(false);
 
   const user = UserService.FromAuthUserToUser(props.auth.user);
-  const roleToShow =
-    UserService.LocalizeRole(user.role);
+  const roleToDisplay =
+    UserService.RoleToDisplay(user.role);
 
   const handleOpen = (): void => {
     setOpen(true);
@@ -89,7 +89,7 @@ const HeaderUserbox = (props: any) => {
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              {roleToShow}
+              {roleToDisplay}
             </UserBoxDescription>
           </UserBoxText>
         </Hidden>
@@ -115,7 +115,7 @@ const HeaderUserbox = (props: any) => {
           <UserBoxText>
             <UserBoxLabel variant="body1">{user.name}</UserBoxLabel>
             <UserBoxDescription variant="body2">
-              {roleToShow}
+              {roleToDisplay}
             </UserBoxDescription>
           </UserBoxText>
         </MenuUserBox>

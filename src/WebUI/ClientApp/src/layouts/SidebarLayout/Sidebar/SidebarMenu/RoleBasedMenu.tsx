@@ -14,6 +14,7 @@ import UserService from 'src/services/UserService';
 
 import MenuItem from './MenuItem';
 import useUtils from 'src/appUtils';
+import Role from 'src/consts/Role';
 
 
 const SubMenuWrapper = styled(Box)(
@@ -144,7 +145,7 @@ const RoleBasedMenu = (props: any) => {
     let result = [];
 
     switch (props.role) {
-      case "Super Admin":
+      case Role.SuperAdmin:
         result.push(
           <List
             key={"superadmin"}
@@ -162,7 +163,7 @@ const RoleBasedMenu = (props: any) => {
             </SubMenuWrapper>
           </List>
         )
-      case "Admin":
+      case Role.Admin:
         result.push(
           <List
             key={"admin"}

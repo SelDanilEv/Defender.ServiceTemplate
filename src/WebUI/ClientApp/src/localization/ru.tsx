@@ -21,7 +21,7 @@ const AddHeaderMenu = (result) => {
 
 const AddConfigurationPage = (result) => {
     result.configuration_page_title = "Статус сервиса";
-    result.configuration_page_api_status = "статус API";
+    result.configuration_page_api_status = "Cтатус API";
     result.configuration_page_configuration = "Конфигурация";
     result.configuration_page_configuration_level = "Уровень конфигурации";
 

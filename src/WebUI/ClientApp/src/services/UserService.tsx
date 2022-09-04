@@ -1,4 +1,5 @@
 import useUtils from "src/appUtils";
+import Role from "src/consts/Role";
 import { UserInfo } from "src/models/user_info";
 
 
@@ -15,31 +16,29 @@ const UserService = {
     },
 
     GetHighestRole: (roles: string[]): string => {
-        let defaultRole = { key: "User", value: "User" }
-        let roleList = [
-            { key: "SuperAdmin", value: "Super Admin" },
-            { key: "Admin", value: "Admin" },
-            defaultRole];
 
-        for (
-            let i = 0, role = {} as { key: string, value: string };
-            i < roleList.length && roles;
-            role = roleList[i++]) {
-            if (roles.includes(role.key)) {
-                return role.value;
-            }
+        if (roles.includes(Role.SuperAdmin)) {
+            return Role.SuperAdmin;
         }
 
-        return defaultRole.value;
+        if (roles.includes(Role.Admin)) {
+            return Role.Admin;
+        }
+
+        if (roles.includes(Role.User)) {
+            return Role.User;
+        }
+
+        return Role.NoRole;
     },
 
-    LocalizeRole: (role: string): string => {
+    RoleToDisplay: (role: string): string => {
         const u = useUtils();
 
-        let defaultRole = { key: "User", value: u.t("role_user") }
+        let defaultRole = { key: Role.User, value: u.t("role_user") }
         let roleList = [
-            { key: "Super Admin", value: u.t("role_super_admin") },
-            { key: "Admin", value: u.t("role_admin") },
+            { key: Role.SuperAdmin, value: u.t("role_super_admin") },
+            { key: Role.Admin, value: u.t("role_admin") },
             defaultRole];
 
         for (
