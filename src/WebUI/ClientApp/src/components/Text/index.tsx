@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import clsx from 'clsx';
 
+
 interface TextProps {
   className?: string;
   color?:
-    | 'primary'
-    | 'secondary'
-    | 'error'
-    | 'warning'
-    | 'success'
-    | 'info'
-    | 'black';
+  | 'primary'
+  | 'secondary'
+  | 'error'
+  | 'warning'
+  | 'success'
+  | 'info'
+  | 'black';
   flex?: boolean;
   children?: ReactNode;
 }
