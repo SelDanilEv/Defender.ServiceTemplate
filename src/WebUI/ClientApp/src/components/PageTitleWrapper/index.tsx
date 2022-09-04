@@ -2,6 +2,7 @@ import { FC, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Container, styled } from '@mui/material';
 
+
 const PageTitle = styled(Box)(
   ({ theme }) => `
         padding: ${theme.spacing(4)};

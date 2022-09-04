@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import LockedButtonProps from "./LockedButtonProps";
 
+
 const LockedButton = ({ isLoading, dispatch, ...restProps }: LockedButtonProps) => {
   return <Button disabled={isLoading} {...restProps} />;
 };
