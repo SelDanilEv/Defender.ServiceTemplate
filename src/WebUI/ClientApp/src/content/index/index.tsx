@@ -20,7 +20,7 @@ const StartPage = (props: any) => {
   return (
     <OverviewWrapper>
       <Helmet>
-        <title>Home</title>
+        <title>Login</title>
       </Helmet>
       <Container maxWidth="lg">
         <Box display="flex" justifyContent="center" py={5} alignItems="center">

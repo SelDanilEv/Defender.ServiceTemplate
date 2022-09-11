@@ -16,17 +16,18 @@ const UserService = {
     },
 
     GetHighestRole: (roles: string[]): string => {
+        if (roles) {
+            if (roles.includes(Role.SuperAdmin)) {
+                return Role.SuperAdmin;
+            }
 
-        if (roles.includes(Role.SuperAdmin)) {
-            return Role.SuperAdmin;
-        }
+            if (roles.includes(Role.Admin)) {
+                return Role.Admin;
+            }
 
-        if (roles.includes(Role.Admin)) {
-            return Role.Admin;
-        }
-
-        if (roles.includes(Role.User)) {
-            return Role.User;
+            if (roles.includes(Role.User)) {
+                return Role.User;
+            }
         }
 
         return Role.NoRole;

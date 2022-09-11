@@ -13,6 +13,7 @@ import {
 import ArrowBackTwoToneIcon from '@mui/icons-material/ArrowBackTwoTone';
 import SaveIcon from '@mui/icons-material/Save';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 
 import EditFromUser from './EditFromUser';
@@ -61,6 +62,9 @@ const UpdateUserPage = (props: any) => {
 
   return (
     <>
+      <Helmet>
+        <title>Account</title>
+      </Helmet>
       <Box display="flex" mb={3}>
         <Tooltip arrow placement="top" title="Go back">
           <IconButton onClick={() => u.react.navigate("/home")} color="primary" sx={{ p: 2, mr: 2 }}>

@@ -5,16 +5,20 @@ import {
     Grid,
     List,
 } from '@mui/material';
+import { Helmet } from 'react-helmet-async';
 
 import HealthCheck from './HealthCheck';
 import Configuration from './Configuration';
 import useUtils from 'src/appUtils';
 
-const Home = (props: any) => {
+const AppConfiguration = (props: any) => {
     const u = useUtils()
 
     return (
         <Grid sx={{ p: "5%" }}>
+            <Helmet>
+                <title>Configuration</title>
+            </Helmet>
             <Box pb={2}>
                 <Typography variant="h2">{u.t("configuration_page_title")}</Typography>
             </Box>
@@ -33,4 +37,4 @@ const Home = (props: any) => {
     );
 }
 
-export default (Home);
+export default (AppConfiguration);
