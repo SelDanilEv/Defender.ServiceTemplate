@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import useUtils from 'src/appUtils';
 
-import Text from 'src/components/Text';
+import Text from 'src/shared-components/Text';
 
 const EditFromAdmin = (props: any) => {
   const u = useUtils()

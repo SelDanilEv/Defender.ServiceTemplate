@@ -1,18 +1,18 @@
 import SyncIcon from '@mui/icons-material/Sync';
 
-import Label from 'src/components/Label';
+import Label from 'src/shared-components/Label';
 import useUtils from 'src/appUtils';
 
 
-const WarningStatus = (props: any) => {
+const PendingStatus = (props: any) => {
     const u = useUtils();
 
     return (
-        <Label color="warning">
+        <Label color="info">
             <SyncIcon fontSize={props.size || "small"} />
-            <b>{props.text || u.t("Warning")}</b>
+            <b>{props.text || u.t("Pending")}</b>
         </Label>
     );
 }
 
-export default (WarningStatus);
+export default (PendingStatus);

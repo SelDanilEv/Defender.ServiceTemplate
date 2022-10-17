@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import { useGoogleLogin } from '@react-oauth/google';
 import { styled } from '@mui/material/styles';
 
-import LockedButton from 'src/components/LockedComponents/Buttons/LockedButton';
+import LockedButton from 'src/shared-components/LockedComponents/Buttons/LockedButton';
 import LoadingStateService from 'src/services/LoadingStateService';
 import LocalizationService from 'src/services/LocalizationService';
 import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
-import ErrorToast from 'src/components/Toast/DefaultErrorToast';
+import ErrorToast from 'src/shared-components/Toast/DefaultErrorToast';
 import config from 'src/config.json';
 import { login } from "src/actions/authActions";
 import apiUrls from 'src/api/apiUrls';
@@ -75,6 +75,9 @@ const Login = (props: any) => {
     const requestData = {
       Token: gResponse.access_token,
     };
+
+    u.log("requestData");
+    u.log(requestData);
 
     APICallWrapper(
       {

@@ -2,8 +2,8 @@ import APICallProps from "./interfaces/APICallProps"
 
 import store from "src/state/store"
 import LoadingStateService from "src/services/LoadingStateService"
-import ErrorToast from "src/components/Toast/DefaultErrorToast";
-import SuccessToast from 'src/components/Toast/DefaultSuccessToast';
+import ErrorToast from "src/shared-components/Toast/DefaultErrorToast";
+import SuccessToast from 'src/shared-components/Toast/DefaultSuccessToast';
 
 
 const APICallWrapper = async (
@@ -25,6 +25,7 @@ const APICallWrapper = async (
         if (!options.headers) {
             options.headers = {};
         }
+        console.log("Before request 1");
 
         let auth = store.getState().auth;
 
@@ -34,7 +35,12 @@ const APICallWrapper = async (
 
         options.headers["Content-Type"] = "application/json";
 
+        console.log("Before request 2");
+
         const response = await fetch(url, options);
+
+        console.log("Before request 3");
+        console.log(response);
 
         switch (response.status) {
             case 200:
@@ -58,6 +64,8 @@ const APICallWrapper = async (
         }
 
     } catch (error) {
+        console.log(error);
+
         await onFailure(error)
         ErrorToast(error);
     } finally {

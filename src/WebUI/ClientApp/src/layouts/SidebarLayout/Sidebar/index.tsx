@@ -12,9 +12,9 @@ import { useContext } from 'react';
 
 import SidebarMenu from './SidebarMenu';
 
-import Logo from 'src/components/LogoSign';
+import Logo from 'src/shared-components/LogoSign';
 import config from 'src/config.json';
-import Scrollbar from 'src/components/Scrollbar';
+import Scrollbar from 'src/shared-components/Scrollbar';
 import { SidebarContext } from 'src/contexts/SidebarContext';
 
 

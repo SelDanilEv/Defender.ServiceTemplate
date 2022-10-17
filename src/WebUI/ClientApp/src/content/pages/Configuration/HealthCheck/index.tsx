@@ -6,9 +6,9 @@ import {
 import { useEffect, useState } from 'react';
 
 import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
-import PendingStatus from 'src/components/Label/StatusLabels/Pending';
-import SuccessStatus from 'src/components/Label/StatusLabels/Success';
-import ErrorStatus from 'src/components/Label/StatusLabels/Error';
+import PendingStatus from 'src/shared-components/Label/StatusLabels/Pending';
+import SuccessStatus from 'src/shared-components/Label/StatusLabels/Success';
+import ErrorStatus from 'src/shared-components/Label/StatusLabels/Error';
 import apiUrls from 'src/api/apiUrls';
 import useUtils from 'src/appUtils';
 

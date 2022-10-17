@@ -6,8 +6,8 @@ import { CssBaseline } from '@mui/material';
 
 import stateLoader from 'src/state/StateLoader';
 import store from "src/state/store";
-import LoadingBar from 'src/components/LoadingBar/LoadingBar';
-import AppToastContainer from 'src/components/ToastContainer';
+import LoadingBar from 'src/shared-components/LoadingBar/LoadingBar';
+import AppToastContainer from 'src/shared-components/ToastContainer';
 import ThemeProvider from 'src/theme/ThemeProvider';
 import router from 'src/router';
 

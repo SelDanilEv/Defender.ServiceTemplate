@@ -1,6 +1,6 @@
 import ClearIcon from '@mui/icons-material/Clear';
 
-import Label from 'src/components/Label';
+import Label from 'src/shared-components/Label';
 import useUtils from 'src/appUtils';
 
 

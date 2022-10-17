@@ -3,8 +3,8 @@ import { Grid } from '@mui/material';
 import DialogTitle from '@mui/material/DialogTitle';
 import Dialog from '@mui/material/Dialog';
 
-import ButtonSuccess from 'src/components/Buttons/ButtonSuccess';
-import ButtonError from 'src/components/Buttons/ButtonError';
+import ButtonSuccess from 'src/shared-components/Buttons/ButtonSuccess';
+import ButtonError from 'src/shared-components/Buttons/ButtonError';
 import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
 import apiUrls from 'src/api/apiUrls';
 

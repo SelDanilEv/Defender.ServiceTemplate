@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import LocalizationService from "src/services/LocalizationService";
-import LockedSelect from 'src/components/LockedComponents/LockedSelect/LockedSelect';
+import LockedSelect from 'src/shared-components/LockedComponents/LockedSelect/LockedSelect';
 import { updateLanguage } from 'src/actions/appAction';
 
 

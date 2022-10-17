@@ -7,7 +7,7 @@ import {
   Divider
 } from '@mui/material';
 
-import Text from 'src/components/Text';
+import Text from 'src/shared-components/Text';
 
 const EditFromSuperAdmin = (props: any) => {
 

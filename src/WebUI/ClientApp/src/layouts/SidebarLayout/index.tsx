@@ -8,7 +8,7 @@ import Header from './Header';
 
 import APICallWrapper from 'src/api/APIWrapper/APICallWrapper';
 import { logout } from 'src/actions/authActions';
-import ErrorToast from 'src/components/Toast/DefaultErrorToast';
+import ErrorToast from 'src/shared-components/Toast/DefaultErrorToast';
 import apiUrls from 'src/api/apiUrls';
 import useUtils from 'src/appUtils';
 

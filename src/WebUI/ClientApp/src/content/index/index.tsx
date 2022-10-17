@@ -4,7 +4,7 @@ import { styled } from '@mui/material/styles';
 
 import Login from './Login';
 
-import Logo from 'src/components/LogoSign';
+import Logo from 'src/shared-components/LogoSign';
 
 
 const OverviewWrapper = styled(Box)(

@@ -6,7 +6,7 @@ import {
 import { Helmet } from 'react-helmet-async';
 import { styled } from '@mui/material/styles';
 
-import Logo from 'src/components/LogoSign';
+import Logo from 'src/shared-components/LogoSign';
 
 const MainContent = styled(Box)(
   () => `

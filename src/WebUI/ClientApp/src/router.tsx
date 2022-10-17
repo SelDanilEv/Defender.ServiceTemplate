@@ -5,7 +5,7 @@ import { RouteObject } from 'react-router';
 import SidebarLayout from 'src/layouts/SidebarLayout';
 import BaseLayout from 'src/layouts/BaseLayout';
 
-import SuspenseLoader from 'src/components/SuspenseLoader';
+import SuspenseLoader from 'src/shared-components/SuspenseLoader';
 
 const Loader = (Component) => (props) =>
 (
@@ -18,7 +18,7 @@ const Login = Loader(lazy(() => import('src/content/index')));
 
 // Configuration
 
-const Configuration = Loader(lazy(() => import('src/content/pages/Configuration')));
+const AppConfiguration = Loader(lazy(() => import('src/content/pages/Configuration')));
 
 // Profile
 
@@ -123,7 +123,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: '',
-        element: <Configuration />
+        element: <AppConfiguration />
       },
       {
         path: '*',

@@ -27,9 +27,9 @@ import { useNavigate } from 'react-router';
 import DeleteUserDialog from '../Delete/DeleteUserModal';
 
 import { UserInfo } from 'src/models/user_info';
-import SuperAdminRoleLable from 'src/components/Label/RoleLabels/SuperAdmin';
-import AdminRoleLable from 'src/components/Label/RoleLabels/Admin';
-import UserRoleLable from 'src/components/Label/RoleLabels/User';
+import SuperAdminRoleLable from 'src/shared-components/Label/RoleLabels/SuperAdmin';
+import AdminRoleLable from 'src/shared-components/Label/RoleLabels/Admin';
+import UserRoleLable from 'src/shared-components/Label/RoleLabels/User';
 
 
 interface UsersTableProps {
