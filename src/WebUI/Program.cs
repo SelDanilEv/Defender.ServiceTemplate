@@ -1,6 +1,6 @@
-using Defender.ServiceTemplate.Application;
-using Defender.ServiceTemplate.Infrastructure;
-using Defender.ServiceTemplate.WebUI;
+using Rentel.ServiceTemplate.Application;
+using Rentel.ServiceTemplate.Infrastructure;
+using Rentel.ServiceTemplate.WebUI;
 using Hellang.Middleware.ProblemDetails;
 using Serilog;
 

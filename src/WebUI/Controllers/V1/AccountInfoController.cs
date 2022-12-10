@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Defender.ServiceTemplate.Application.Modules.Auth.Commands;
-using Defender.ServiceTemplate.Application.DTOs;
-using Defender.ServiceTemplate.Domain.Models;
-using Defender.ServiceTemplate.WebUI.Attributes;
+using Rentel.ServiceTemplate.Application.Modules.Auth.Commands;
+using Rentel.ServiceTemplate.Application.DTOs;
+using Rentel.ServiceTemplate.Domain.Models;
+using Rentel.ServiceTemplate.WebUI.Attributes;
 
-namespace Defender.ServiceTemplate.WebUI.Controllers.V1;
+namespace Rentel.ServiceTemplate.WebUI.Controllers.V1;
 
 public class AccountInfoController : BaseApiController
 {

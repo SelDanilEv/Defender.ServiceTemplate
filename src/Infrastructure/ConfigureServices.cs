@@ -1,18 +1,18 @@
 ﻿using System.Net.Http.Headers;
 using System.Reflection;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
-using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
-using Defender.ServiceTemplate.Application.Configuration.Options;
-using Defender.ServiceTemplate.Infrastructure.Clients;
-using Defender.ServiceTemplate.Infrastructure.Clients.Interfaces;
-using Defender.ServiceTemplate.Infrastructure.Clients.UserManagement;
-using Defender.ServiceTemplate.Infrastructure.Repositories.Sample;
-using Defender.ServiceTemplate.Infrastructure.Services;
+using Rentel.ServiceTemplate.Application.Common.Interfaces;
+using Rentel.ServiceTemplate.Application.Common.Interfaces.Repositories;
+using Rentel.ServiceTemplate.Application.Configuration.Options;
+using Rentel.ServiceTemplate.Infrastructure.Clients;
+using Rentel.ServiceTemplate.Infrastructure.Clients.Interfaces;
+using Rentel.ServiceTemplate.Infrastructure.Clients.UserManagement;
+using Rentel.ServiceTemplate.Infrastructure.Repositories.Sample;
+using Rentel.ServiceTemplate.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Defender.ServiceTemplate.Infrastructure;
+namespace Rentel.ServiceTemplate.Infrastructure;
 
 public static class ConfigureServices
 {
@@ -63,7 +63,7 @@ public static class ConfigureServices
             client.BaseAddress = new Uri(
                 serviceProvider.GetRequiredService<IOptions<UserManagementOption>>().Value.Url);
 
-            var token = serviceProvider.GetRequiredService<ICurrentUserService>().Token;
+            var token = serviceProvider.GetRequiredService<ICurrentUserAccessor>().Token;
 
             if (!string.IsNullOrWhiteSpace(token))
             {

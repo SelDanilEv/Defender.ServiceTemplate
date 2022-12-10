@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Defender.ServiceTemplate.Domain.Entities;
+namespace Rentel.ServiceTemplate.Domain.Entities;
 
 public interface IBaseModel
 {

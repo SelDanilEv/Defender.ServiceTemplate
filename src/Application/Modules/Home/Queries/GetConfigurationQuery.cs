@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using Defender.ServiceTemplate.Application.Enums;
-using Defender.ServiceTemplate.Application.Helpers;
+using Rentel.ServiceTemplate.Application.Helpers;
 using MediatR;
+using Rentel.ServiceTemplate.Application.Common.Enums;
 
-namespace Defender.ServiceTemplate.Application.Modules.Home.Queries;
+namespace Rentel.ServiceTemplate.Application.Modules.Home.Queries;
 
 public record GetConfigurationQuery : IRequest<Dictionary<string, string>>
 {

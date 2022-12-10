@@ -1,6 +1,6 @@
-﻿using Defender.ServiceTemplate.Application.Models.LoginResponse;
+﻿using Rentel.ServiceTemplate.Application.Common.Models.LoginResponse;
 
-namespace Defender.ServiceTemplate.Application.Common.Interfaces;
+namespace Rentel.ServiceTemplate.Application.Common.Interfaces;
 
 public interface IAuthService
 {

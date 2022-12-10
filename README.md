@@ -1,4 +1,4 @@
-Defender Service Template
+Rentel Service Template
 
 Initialization
 1) Rename solution file

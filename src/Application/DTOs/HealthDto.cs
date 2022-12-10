@@ -1,4 +1,4 @@
-﻿namespace Defender.ServiceTemplate.Application.DTOs;
+﻿namespace Rentel.ServiceTemplate.Application.DTOs;
 
 public class HealthDto
 {

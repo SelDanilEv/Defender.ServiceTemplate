@@ -1,8 +1,8 @@
-﻿using Defender.ServiceTemplate.Application.Common.Interfaces;
+﻿using Rentel.ServiceTemplate.Application.Common.Interfaces;
 using FluentValidation;
 using MediatR;
 
-namespace Defender.ServiceTemplate.Application.Modules.Sample.Queries;
+namespace Rentel.ServiceTemplate.Application.Modules.Sample.Queries;
 
 public record SampleQuery : IRequest
 {

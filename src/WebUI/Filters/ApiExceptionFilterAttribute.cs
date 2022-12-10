@@ -1,9 +1,9 @@
-﻿using Defender.ServiceTemplate.Application.Common.Exceptions;
+﻿using Rentel.ServiceTemplate.Application.Common.Exceptions;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace Defender.ServiceTemplate.WebUI.Filters;
+namespace Rentel.ServiceTemplate.WebUI.Filters;
 
 public class ApiExceptionFilterAttribute : ExceptionFilterAttribute
 {

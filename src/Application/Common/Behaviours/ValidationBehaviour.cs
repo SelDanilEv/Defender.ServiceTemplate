@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using MediatR;
-using ValidationException = Defender.ServiceTemplate.Application.Common.Exceptions.ValidationException;
+using ValidationException = Rentel.ServiceTemplate.Application.Common.Exceptions.ValidationException;
 
-namespace Defender.ServiceTemplate.Application.Common.Behaviours;
+namespace Rentel.ServiceTemplate.Application.Common.Behaviours;
 
 public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
      where TRequest : IRequest<TResponse>

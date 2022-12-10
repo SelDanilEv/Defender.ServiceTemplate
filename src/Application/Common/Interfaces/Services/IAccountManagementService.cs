@@ -1,7 +1,7 @@
-﻿using Defender.ServiceTemplate.Application.DTOs;
-using Defender.ServiceTemplate.Application.Modules.Auth.Commands;
+﻿using Rentel.ServiceTemplate.Application.DTOs;
+using Rentel.ServiceTemplate.Application.Modules.Auth.Commands;
 
-namespace Defender.ServiceTemplate.Application.Common.Interfaces;
+namespace Rentel.ServiceTemplate.Application.Common.Interfaces;
 
 public interface IAccountManagementService
 {

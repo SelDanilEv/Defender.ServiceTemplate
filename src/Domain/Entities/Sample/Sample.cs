@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace Defender.ServiceTemplate.Domain.Entities.Sample;
+namespace Rentel.ServiceTemplate.Domain.Entities.Sample;
 
 public class SampleModel : IBaseModel
 {

@@ -13,7 +13,7 @@
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace Defender.ServiceTemplate.Infrastructure.Clients.UserManagement;
+namespace Rentel.ServiceTemplate.Infrastructure.Clients.UserManagement;
 
 [System.CodeDom.Compiler.GeneratedCode("NSwag", "13.15.10.0 (NJsonSchema v10.6.10.0 (Newtonsoft.Json v13.0.0.0))")]
 public partial class UserManagementClient : IUserManagementClient

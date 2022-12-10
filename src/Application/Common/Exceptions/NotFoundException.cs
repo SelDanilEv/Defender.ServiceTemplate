@@ -1,4 +1,4 @@
-﻿namespace Defender.ServiceTemplate.Application.Common.Exceptions;
+﻿namespace Rentel.ServiceTemplate.Application.Common.Exceptions;
 
 public class NotFoundException : Exception
 {

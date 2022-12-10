@@ -1,6 +1,7 @@
 using AutoMapper;
+using Rentel.ServiceTemplate.Application.Common.Models.LoginResponse;
 
-namespace Defender.ServiceTemplate.Infrastructure.Mappings;
+namespace Rentel.ServiceTemplate.Infrastructure.Mappings;
 
 public class ClientModelsProfile : Profile
 {
@@ -8,7 +9,7 @@ public class ClientModelsProfile : Profile
     {
         CreateMap<
             Clients.UserManagement.LoginResponse,
-            Application.Models.LoginResponse.LoginResponse>();
+            LoginResponse>();
 
         CreateMap<
             Clients.UserManagement.UserDto,

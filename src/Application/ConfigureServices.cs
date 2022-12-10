@@ -1,12 +1,12 @@
 ﻿using System.Reflection;
-using Defender.ServiceTemplate.Application.Common.Behaviours;
-using Defender.ServiceTemplate.Application.Configuration.Exstension;
+using Rentel.ServiceTemplate.Application.Common.Behaviours;
+using Rentel.ServiceTemplate.Application.Configuration.Exstension;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Defender.ServiceTemplate.Application;
+namespace Rentel.ServiceTemplate.Application;
 
 public static class ConfigureServices
 {

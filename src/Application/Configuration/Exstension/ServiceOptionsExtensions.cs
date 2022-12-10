@@ -1,8 +1,8 @@
-﻿using Defender.ServiceTemplate.Application.Configuration.Options;
+﻿using Rentel.ServiceTemplate.Application.Configuration.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Defender.ServiceTemplate.Application.Configuration.Exstension;
+namespace Rentel.ServiceTemplate.Application.Configuration.Exstension;
 
 public static class ServiceOptionsExtensions
 {

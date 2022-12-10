@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Defender.ServiceTemplate.WebUI.Attributes;
+using Rentel.ServiceTemplate.WebUI.Attributes;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Defender.ServiceTemplate.Application.Modules.Home.Queries;
-using Defender.ServiceTemplate.Application.Enums;
-using Defender.ServiceTemplate.Domain.Models;
-using Defender.ServiceTemplate.Application.DTOs;
+using Rentel.ServiceTemplate.Application.Modules.Home.Queries;
+using Rentel.ServiceTemplate.Domain.Models;
+using Rentel.ServiceTemplate.Application.DTOs;
+using Rentel.ServiceTemplate.Application.Common.Enums;
 
-namespace Defender.ServiceTemplate.WebUI.Controllers.V1;
+namespace Rentel.ServiceTemplate.WebUI.Controllers.V1;
 
 public class HomeController : BaseApiController
 {

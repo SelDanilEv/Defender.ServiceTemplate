@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
-using Defender.ServiceTemplate.Infrastructure.Clients.UserManagement;
+using Rentel.ServiceTemplate.Application.Common.Interfaces;
+using Rentel.ServiceTemplate.Infrastructure.Clients.UserManagement;
 
-namespace Defender.ServiceTemplate.Infrastructure.Services;
+namespace Rentel.ServiceTemplate.Infrastructure.Services;
 public class AuthService : IAuthService
 {
     private readonly IUserManagementClient _userManagementClient;
@@ -16,12 +16,12 @@ public class AuthService : IAuthService
         _mapper = mapper;
     }
 
-    public async Task<Application.Models.LoginResponse.LoginResponse> Authenticate(string token)
+    public async Task<Application.Common.Models.LoginResponse.LoginResponse> Authenticate(string token)
     {
         var command = new LoginGoogleCommand { Token = token };
 
         var loginResponse = await _userManagementClient.GoogleAsync(command);
 
-        return _mapper.Map<Application.Models.LoginResponse.LoginResponse>(loginResponse);
+        return _mapper.Map<Application.Common.Models.LoginResponse.LoginResponse>(loginResponse);
     }
 }

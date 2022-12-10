@@ -1,10 +1,10 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
-using Defender.ServiceTemplate.Domain.Entities;
-using Defender.ServiceTemplate.Application.Configuration.Options;
-using Defender.ServiceTemplate.Application.Helpers;
+using Rentel.ServiceTemplate.Domain.Entities;
+using Rentel.ServiceTemplate.Application.Configuration.Options;
+using Rentel.ServiceTemplate.Application.Helpers;
 
-namespace Defender.ServiceTemplate.Infrastructure.Repositories;
+namespace Rentel.ServiceTemplate.Infrastructure.Repositories;
 
 public class MongoRepository<T> : BaseMongoRepository<T> where T : IBaseModel, new()
 {

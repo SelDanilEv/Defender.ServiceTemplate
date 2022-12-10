@@ -1,12 +1,12 @@
 ﻿using System.Linq.Expressions;
-using Defender.ServiceTemplate.Application.Configuration.Options;
-using Defender.ServiceTemplate.Application.Enums;
-using Defender.ServiceTemplate.Application.Helpers;
-using Defender.ServiceTemplate.Domain.Entities;
-using Defender.ServiceTemplate.Infrastructure.Enums;
+using Rentel.ServiceTemplate.Application.Configuration.Options;
+using Rentel.ServiceTemplate.Application.Helpers;
+using Rentel.ServiceTemplate.Domain.Entities;
+using Rentel.ServiceTemplate.Infrastructure.Enums;
 using MongoDB.Driver;
+using Rentel.ServiceTemplate.Application.Common.Enums;
 
-namespace Defender.ServiceTemplate.Infrastructure.Repositories;
+namespace Rentel.ServiceTemplate.Infrastructure.Repositories;
 
 public abstract class BaseMongoRepository<Model> where Model : IBaseModel, new()
 {

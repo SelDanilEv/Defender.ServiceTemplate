@@ -1,4 +1,4 @@
-﻿namespace Defender.ServiceTemplate.Application.Helpers;
+﻿namespace Rentel.ServiceTemplate.Application.Helpers;
 
 public static class SimpleLogger
 {
