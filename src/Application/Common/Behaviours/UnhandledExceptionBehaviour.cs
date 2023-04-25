@@ -1,7 +1,7 @@
-﻿using Rentel.ServiceTemplate.Application.Helpers;
+﻿using Defender.ServiceTemplate.Application.Helpers;
 using MediatR;
 
-namespace Rentel.ServiceTemplate.Application.Common.Behaviours;
+namespace Defender.ServiceTemplate.Application.Common.Behaviours;
 
 public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 {

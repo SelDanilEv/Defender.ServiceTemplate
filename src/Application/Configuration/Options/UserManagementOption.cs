@@ -1,4 +1,4 @@
-﻿namespace Rentel.ServiceTemplate.Application.Configuration.Options;
+﻿namespace Defender.ServiceTemplate.Application.Configuration.Options;
 
 public class UserManagementOption
 {

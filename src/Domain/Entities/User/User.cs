@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace Rentel.ServiceTemplate.Domain.Entities.User;
+namespace Defender.ServiceTemplate.Domain.Entities.User;
 
 public class User : IBaseModel
 {

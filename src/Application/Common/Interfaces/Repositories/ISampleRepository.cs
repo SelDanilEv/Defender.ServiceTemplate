@@ -1,6 +1,6 @@
-﻿using Rentel.ServiceTemplate.Domain.Entities.Sample;
+﻿using Defender.ServiceTemplate.Domain.Entities.Sample;
 
-namespace Rentel.ServiceTemplate.Application.Common.Interfaces.Repositories;
+namespace Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
 
 public interface ISampleRepository
 {

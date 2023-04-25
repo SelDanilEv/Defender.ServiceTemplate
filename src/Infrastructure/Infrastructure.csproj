@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
-        <RootNamespace>Rentel.ServiceTemplate.Infrastructure</RootNamespace>
-        <AssemblyName>Rentel.ServiceTemplate.Infrastructure</AssemblyName>
+        <RootNamespace>Defender.ServiceTemplate.Infrastructure</RootNamespace>
+        <AssemblyName>Defender.ServiceTemplate.Infrastructure</AssemblyName>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>

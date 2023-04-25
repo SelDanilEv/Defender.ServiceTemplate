@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Rentel.ServiceTemplate.WebUI.Controllers;
+namespace Defender.ServiceTemplate.WebUI.Controllers;
 
 [Route("api/[controller]")]
 public class BaseApiController : ControllerBase

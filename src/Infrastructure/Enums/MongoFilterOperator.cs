@@ -1,4 +1,4 @@
-﻿namespace Rentel.ServiceTemplate.Infrastructure.Enums;
+﻿namespace Defender.ServiceTemplate.Infrastructure.Enums;
 
 public enum MongoFilterOperator
 {

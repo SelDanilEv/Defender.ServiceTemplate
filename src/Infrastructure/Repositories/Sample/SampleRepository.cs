@@ -1,9 +1,9 @@
-﻿using Rentel.ServiceTemplate.Application.Common.Interfaces.Repositories;
-using Rentel.ServiceTemplate.Application.Configuration.Options;
-using Rentel.ServiceTemplate.Domain.Entities.Sample;
+﻿using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
+using Defender.ServiceTemplate.Application.Configuration.Options;
+using Defender.ServiceTemplate.Domain.Entities.Sample;
 using Microsoft.Extensions.Options;
 
-namespace Rentel.ServiceTemplate.Infrastructure.Repositories.Sample;
+namespace Defender.ServiceTemplate.Infrastructure.Repositories.Sample;
 
 public class SampleRepository : MongoRepository<SampleModel>, ISampleRepository
 {

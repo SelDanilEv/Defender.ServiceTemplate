@@ -1,4 +1,4 @@
-﻿namespace Rentel.ServiceTemplate.Application.Common.Exceptions;
+﻿namespace Defender.ServiceTemplate.Application.Common.Exceptions;
 
 public class CustomSampleException : Exception
 {

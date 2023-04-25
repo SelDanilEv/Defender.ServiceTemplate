@@ -1,6 +1,6 @@
 ﻿using FluentValidation.Results;
 
-namespace Rentel.ServiceTemplate.Application.Common.Exceptions;
+namespace Defender.ServiceTemplate.Application.Common.Exceptions;
 
 public class ValidationException : Exception
 {

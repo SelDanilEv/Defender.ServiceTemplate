@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 
-namespace Rentel.ServiceTemplate.WebUI.Attributes;
+namespace Defender.ServiceTemplate.WebUI.Attributes;
 
 public class AuthAttribute : AuthorizeAttribute
 {

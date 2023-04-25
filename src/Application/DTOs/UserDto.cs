@@ -1,4 +1,4 @@
-﻿namespace Rentel.ServiceTemplate.Application.DTOs;
+﻿namespace Defender.ServiceTemplate.Application.DTOs;
 
 public class UserDto
 {

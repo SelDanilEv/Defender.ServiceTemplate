@@ -1,9 +1,9 @@
-﻿using Rentel.ServiceTemplate.Application.Common.Interfaces;
-using Rentel.ServiceTemplate.Application.DTOs;
+﻿using Defender.ServiceTemplate.Application.Common.Interfaces;
+using Defender.ServiceTemplate.Application.DTOs;
 using FluentValidation;
 using MediatR;
 
-namespace Rentel.ServiceTemplate.Application.Modules.Auth.Commands;
+namespace Defender.ServiceTemplate.Application.Modules.Auth.Commands;
 
 public record UpdateAccountInfoCommand : IRequest<UserDto>
 {

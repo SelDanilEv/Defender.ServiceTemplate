@@ -1,10 +1,10 @@
-﻿using Rentel.ServiceTemplate.Application.Common.Interfaces;
-using Rentel.ServiceTemplate.Application.Helpers;
+﻿using Defender.ServiceTemplate.Application.Common.Interfaces;
+using Defender.ServiceTemplate.Application.Helpers;
+using Defender.ServiceTemplate.Application.Models.LoginResponse;
 using FluentValidation;
 using MediatR;
-using Rentel.ServiceTemplate.Application.Common.Models.LoginResponse;
 
-namespace Rentel.ServiceTemplate.Application.Modules.Auth.Commands;
+namespace Defender.ServiceTemplate.Application.Modules.Auth.Commands;
 
 public record LoginGoogleCommand : IRequest<LoginResponse>
 {

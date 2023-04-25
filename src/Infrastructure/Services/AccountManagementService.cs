@@ -1,20 +1,20 @@
 ﻿using AutoMapper;
-using Rentel.ServiceTemplate.Application.Common.Exceptions;
-using Rentel.ServiceTemplate.Application.Common.Interfaces;
-using Rentel.ServiceTemplate.Application.Helpers;
-using Rentel.ServiceTemplate.Application.Modules.Auth.Commands;
-using Rentel.ServiceTemplate.Infrastructure.Clients.UserManagement;
+using Defender.ServiceTemplate.Application.Common.Exceptions;
+using Defender.ServiceTemplate.Application.Common.Interfaces;
+using Defender.ServiceTemplate.Application.Helpers;
+using Defender.ServiceTemplate.Application.Modules.Auth.Commands;
+using Defender.ServiceTemplate.Infrastructure.Clients.UserManagement;
 
-namespace Rentel.ServiceTemplate.Infrastructure.Services;
+namespace Defender.ServiceTemplate.Infrastructure.Services;
 public class AccountManagementService : IAccountManagementService
 {
     private readonly IUserManagementClient _userManagementClient;
-    private readonly ICurrentUserAccessor _currentUserService;
+    private readonly ICurrentUserService _currentUserService;
     private readonly IMapper _mapper;
 
     public AccountManagementService(
         IUserManagementClient userManagementClient,
-        ICurrentUserAccessor currentUserService,
+        ICurrentUserService currentUserService,
         IMapper mapper)
     {
         _userManagementClient = userManagementClient;

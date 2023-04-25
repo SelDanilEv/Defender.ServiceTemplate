@@ -1,4 +1,4 @@
-﻿namespace Rentel.ServiceTemplate.Infrastructure.Clients.UserManagement;
+﻿namespace Defender.ServiceTemplate.Infrastructure.Clients.UserManagement;
 
 public interface IUserManagementClient
 {

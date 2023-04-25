@@ -1,10 +1,10 @@
 ﻿using System.Net.Http.Headers;
-using Rentel.ServiceTemplate.Application.Common.Exceptions;
-using Rentel.ServiceTemplate.Infrastructure.Clients.Interfaces;
+using Defender.ServiceTemplate.Application.Common.Exceptions;
+using Defender.ServiceTemplate.Application.Models.Sample;
+using Defender.ServiceTemplate.Infrastructure.Clients.Interfaces;
 using Newtonsoft.Json;
-using Rentel.ServiceTemplate.Application.Common.Models.Sample;
 
-namespace Rentel.ServiceTemplate.Infrastructure.Clients;
+namespace Defender.ServiceTemplate.Infrastructure.Clients;
 
 public partial class SampleClient : ISampleClient
 {

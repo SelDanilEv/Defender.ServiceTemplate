@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Rentel.ServiceTemplate.Application.Common.Models.LoginResponse;
-using Rentel.ServiceTemplate.Application.Modules.Auth.Commands;
+using Defender.ServiceTemplate.Application.Models.LoginResponse;
+using Defender.ServiceTemplate.Application.Modules.Auth.Commands;
 
-namespace Rentel.ServiceTemplate.WebUI.Controllers.V1;
+namespace Defender.ServiceTemplate.WebUI.Controllers.V1;
 
 public class AuthController : BaseApiController
 {

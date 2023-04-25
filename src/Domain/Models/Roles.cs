@@ -1,5 +1,4 @@
-﻿namespace Rentel.ServiceTemplate.Domain.Models;
-
+﻿namespace Defender.ServiceTemplate.Domain.Models;
 public static class Roles
 {
     public const string User = "User";

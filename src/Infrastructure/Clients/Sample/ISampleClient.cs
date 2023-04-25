@@ -1,6 +1,6 @@
-﻿using Rentel.ServiceTemplate.Application.Common.Models.Sample;
+﻿using Defender.ServiceTemplate.Application.Models.Sample;
 
-namespace Rentel.ServiceTemplate.Infrastructure.Clients.Interfaces;
+namespace Defender.ServiceTemplate.Infrastructure.Clients.Interfaces;
 public interface ISampleClient
 {
     Task<SampleResponse> GetSampleAsync();

@@ -1,9 +1,9 @@
-﻿using Rentel.ServiceTemplate.Application.Common.Interfaces;
-using Rentel.ServiceTemplate.Application.Common.Interfaces.Repositories;
-using Rentel.ServiceTemplate.Application.Common.Models.Sample;
-using Rentel.ServiceTemplate.Infrastructure.Clients.Interfaces;
+﻿using Defender.ServiceTemplate.Application.Common.Interfaces;
+using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
+using Defender.ServiceTemplate.Application.Models.Sample;
+using Defender.ServiceTemplate.Infrastructure.Clients.Interfaces;
 
-namespace Rentel.ServiceTemplate.Infrastructure.Services;
+namespace Defender.ServiceTemplate.Infrastructure.Services;
 
 public class SampleService : ISampleService
 {

@@ -1,10 +1,10 @@
-﻿using Rentel.ServiceTemplate.Application.Common.Enums;
+﻿using Defender.ServiceTemplate.Application.Enums;
 
-namespace Rentel.ServiceTemplate.Application.Helpers;
+namespace Defender.ServiceTemplate.Application.Helpers;
 
 public static class EnvVariableResolver
 {
-    private const string EnvironmentVariablePrefix = "Rentel_App_";
+    private const string EnvironmentVariablePrefix = "Defender_App_";
 
     private static readonly Dictionary<string, string> _environmentVariables =
         new Dictionary<string, string>();
