@@ -1,8 +1,8 @@
 ﻿using System.Linq.Expressions;
+using Defender.Common.Entities;
+using Defender.Common.Enums;
+using Defender.Common.Helpers;
 using Defender.ServiceTemplate.Application.Configuration.Options;
-using Defender.ServiceTemplate.Application.Enums;
-using Defender.ServiceTemplate.Application.Helpers;
-using Defender.ServiceTemplate.Domain.Entities;
 using Defender.ServiceTemplate.Infrastructure.Enums;
 using MongoDB.Driver;
 
@@ -14,12 +14,12 @@ public abstract class BaseMongoRepository<Model> where Model : IBaseModel, new()
     private static IMongoDatabase database;
     protected IMongoCollection<Model> _mongoCollection;
 
-    protected BaseMongoRepository(MongoDbOption mongoOption)
+    protected BaseMongoRepository(MongoDbOptions mongoOption)
     {
         mongoOption.ConnectionString =
             String.Format(
                 mongoOption.ConnectionString,
-                EnvVariableResolver.GetEnvironmentVariable(EnvVariable.MongoDBPassword));
+                SecretsHelper.GetSecret(Secret.MongoDBPassword));
 
         client ??= new MongoClient(mongoOption.ConnectionString);
 
@@ -29,6 +29,11 @@ public abstract class BaseMongoRepository<Model> where Model : IBaseModel, new()
     }
 
     protected virtual Task<IList<Model>> GetItemsAsync()
+    {
+        throw new NotImplementedException();
+    }
+
+    protected virtual Task<Model> GetItemWithFilterAsync(FilterDefinition<Model> filter)
     {
         throw new NotImplementedException();
     }
@@ -62,8 +67,7 @@ public abstract class BaseMongoRepository<Model> where Model : IBaseModel, new()
     {
         return Builders<Model>.Filter.Eq(s => s.Id, id);
     }
-    protected FilterDefinition<Model> CreateFilterDefinition<TField>(
-        Expression<Func<Model, TField>> field, TField value)
+    protected FilterDefinition<Model> CreateFilterDefinition<TField>(Expression<Func<Model, TField>> field, TField value)
     {
         return Builders<Model>.Filter.Eq(field, value);
     }

@@ -1,12 +1,13 @@
 ﻿using System.Net.Http.Headers;
 using System.Reflection;
+using Defender.Common.Helpers;
 using Defender.ServiceTemplate.Application.Common.Interfaces;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
+using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
 using Defender.ServiceTemplate.Application.Configuration.Options;
-using Defender.ServiceTemplate.Infrastructure.Clients;
-using Defender.ServiceTemplate.Infrastructure.Clients.Interfaces;
-using Defender.ServiceTemplate.Infrastructure.Clients.UserManagement;
-using Defender.ServiceTemplate.Infrastructure.Repositories.Sample;
+using Defender.ServiceTemplate.Infrastructure.Clients.ServiceClient;
+using Defender.ServiceTemplate.Infrastructure.Clients.ServiceClient.Generated;
+using Defender.ServiceTemplate.Infrastructure.Repositories.DomainModels;
 using Defender.ServiceTemplate.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,62 +17,47 @@ namespace Defender.ServiceTemplate.Infrastructure;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddInfrastructureServices(
-        this IServiceCollection services,
-        IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        services.RegisterServices();
+        RegisterServices(services);
 
-        services.RegisterRepositories();
+        RegisterRepositories(services);
 
-        services.RegisterApiClients();
+        RegisterApiClients(services, configuration);
 
-        return services;
-    }
-
-    private static IServiceCollection RegisterServices(this IServiceCollection services)
-    {
-        services.AddTransient<IAuthService, AuthService>();
-        services.AddTransient<IAccountManagementService, AccountManagementService>();
-        services.AddTransient<ISampleService, SampleService>();
+        RegisterClientWrappers(services);
 
         return services;
     }
 
-    private static IServiceCollection RegisterRepositories(this IServiceCollection services)
+    private static void RegisterClientWrappers(IServiceCollection services)
     {
-        services.AddTransient<ISampleRepository, SampleRepository>();
-
-        return services;
+        services.AddTransient<IServiceWrapper, ServiceWrapper>();
     }
 
-    private static IServiceCollection RegisterApiClients(
-        this IServiceCollection services)
+    private static void RegisterServices(IServiceCollection services)
     {
-        services.AddHttpClient<ISampleClient, SampleClient>("SampleClient",
-            (serviceProvider, client) =>
+        services.AddTransient<IService, Service>();
+    }
+
+    private static void RegisterRepositories(IServiceCollection services)
+    {
+        services.AddSingleton<IDomainModelRepository, DomainModelRepository>();
+    }
+
+    private static void RegisterApiClients(IServiceCollection services, IConfiguration configuration)
+    {
+
+        services.AddHttpClient<IServiceClient, ServiceClient>(nameof(ServiceClient), (serviceProvider, client) =>
         {
-            client.BaseAddress = new Uri(
-                serviceProvider.GetRequiredService<IOptions<SampleOption>>().Value.Url);
+            client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value.Url);
+            client.DefaultRequestHeaders.Authorization =
+            new AuthenticationHeaderValue(
+                "Bearer",
+                InternalJwtHelper.GenerateInternalJWT(configuration["JwtTokenIssuer"]));
         });
-
-        services.AddHttpClient<IUserManagementClient, UserManagementClient>("UserManagementClient",
-            (serviceProvider, client) =>
-        {
-            client.BaseAddress = new Uri(
-                serviceProvider.GetRequiredService<IOptions<UserManagementOption>>().Value.Url);
-
-            var token = serviceProvider.GetRequiredService<ICurrentUserService>().Token;
-
-            if (!string.IsNullOrWhiteSpace(token))
-            {
-                client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(token);
-            }
-        });
-
-        return services;
     }
 
 }

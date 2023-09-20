@@ -1,6 +1,6 @@
 ﻿using System.Collections;
-using Defender.ServiceTemplate.Application.Enums;
-using Defender.ServiceTemplate.Application.Helpers;
+using Defender.Common.Enums;
+using Defender.Common.Helpers;
 using MediatR;
 
 namespace Defender.ServiceTemplate.Application.Modules.Home.Queries;
@@ -10,48 +10,43 @@ public record GetConfigurationQuery : IRequest<Dictionary<string, string>>
     public ConfigurationLevel Level { get; set; } = ConfigurationLevel.All;
 };
 
-public class GetConfigurationQueryHandler :
-    RequestHandler<GetConfigurationQuery, Dictionary<string, string>>
+public class GetConfigurationQueryHandler : IRequestHandler<GetConfigurationQuery, Dictionary<string, string>>
 {
-    protected override Dictionary<string, string> Handle(GetConfigurationQuery request)
+    public async Task<Dictionary<string, string>> Handle(GetConfigurationQuery request, CancellationToken cancellationToken)
     {
         var result = new Dictionary<string, string>();
 
         switch (request.Level)
         {
             case ConfigurationLevel.All:
-                var allProcessEnvVariables =
-                    Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process);
+                var allProcessEnvVariables = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Process);
                 foreach (DictionaryEntry envVariable in allProcessEnvVariables)
                 {
                     result.TryAdd(envVariable.Key.ToString(), envVariable.Value.ToString());
                 }
 
-                var allUserEnvVariables =
-                    Environment.GetEnvironmentVariables(EnvironmentVariableTarget.User);
+                var allUserEnvVariables = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.User);
                 foreach (DictionaryEntry envVariable in allUserEnvVariables)
                 {
                     result.TryAdd(envVariable.Key.ToString(), envVariable.Value.ToString());
                 }
 
-                var allMachineEnvVariables =
-                    Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Machine);
+                var allMachineEnvVariables = Environment.GetEnvironmentVariables(EnvironmentVariableTarget.Machine);
                 foreach (DictionaryEntry envVariable in allMachineEnvVariables)
                 {
                     result.TryAdd(envVariable.Key.ToString(), envVariable.Value.ToString());
                 }
                 break;
             case ConfigurationLevel.Admin:
-                foreach (EnvVariable envVariable in
-                    (EnvVariable[])Enum.GetValues(typeof(EnvVariable)))
+                foreach (Secret secret
+                    in (Secret[])Enum.GetValues(typeof(Secret)))
                 {
-                    result.Add(
-                        envVariable.ToString(),
-                        EnvVariableResolver.GetEnvironmentVariable(envVariable));
+                    result.Add(secret.ToString(), SecretsHelper.GetSecret(secret));
                 }
                 break;
         }
 
         return result;
     }
+
 }

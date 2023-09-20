@@ -1,8 +1,8 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Bson;
-using Defender.ServiceTemplate.Domain.Entities;
 using Defender.ServiceTemplate.Application.Configuration.Options;
 using Defender.ServiceTemplate.Application.Helpers;
+using Defender.Common.Entities;
 
 namespace Defender.ServiceTemplate.Infrastructure.Repositories;
 
@@ -10,7 +10,7 @@ public class MongoRepository<T> : BaseMongoRepository<T> where T : IBaseModel, n
 {
     private const string ErrorMessage = "Error occur in mongo repository";
 
-    public MongoRepository(MongoDbOption mongoOption) : base(mongoOption)
+    public MongoRepository(MongoDbOptions mongoOption) : base(mongoOption)
     {
     }
 
@@ -21,6 +21,22 @@ public class MongoRepository<T> : BaseMongoRepository<T> where T : IBaseModel, n
         try
         {
             result = await _mongoCollection.Find(new BsonDocument()).ToListAsync();
+        }
+        catch (Exception e)
+        {
+            SimpleLogger.Log(e, ErrorMessage);
+        }
+
+        return result;
+    }
+
+    protected override async Task<T> GetItemWithFilterAsync(FilterDefinition<T> filter)
+    {
+        var result = new T();
+
+        try
+        {
+            result = await _mongoCollection.Find(filter).FirstOrDefaultAsync();
         }
         catch (Exception e)
         {

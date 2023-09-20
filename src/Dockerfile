@@ -5,8 +5,6 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine AS build
 
-RUN apk add --update nodejs npm
-
 WORKDIR /src
 
 COPY ["WebUI/WebUI.csproj", "WebUI/"]

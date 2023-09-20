@@ -11,31 +11,13 @@ public static class SimpleLogger
             Serilog.Log.Error(message);
         }
 
-        Serilog.Log.Error(
-            "ERROR --- " +
-            DateTime.Now.ToString() +
-            " : " +
-            ex.Message);
-
-        Serilog.Log.Error(
-            "ERROR --- " +
-            DateTime.Now.ToString() +
-            " : " +
-            ex.StackTrace);
+        Serilog.Log.Error("ERROR --- " + DateTime.Now.ToString() + " : " + ex.Message);
+        Serilog.Log.Error("ERROR --- " + DateTime.Now.ToString() + " : " + ex.StackTrace);
 
         if (ex.InnerException != null)
         {
-            Serilog.Log.Error(
-                "ERROR INNER --- " +
-                DateTime.Now.ToString() +
-                " : " +
-                ex.InnerException.Message);
-
-            Serilog.Log.Error(
-                "ERROR INNER --- " +
-                DateTime.Now.ToString() +
-                " : " +
-                ex.InnerException.StackTrace);
+            Serilog.Log.Error("ERROR INNER --- " + DateTime.Now.ToString() + " : " + ex.InnerException.Message);
+            Serilog.Log.Error("ERROR INNER --- " + DateTime.Now.ToString() + " : " + ex.InnerException.StackTrace);
         }
     }
 
@@ -44,25 +26,13 @@ public static class SimpleLogger
         switch (logLevel)
         {
             case LogLevel.Debug:
-                Serilog.Log.Debug(
-                    "DEBUG --- " +
-                    DateTime.Now.ToString() +
-                    " : " +
-                    msg);
+                Serilog.Log.Debug("DEBUG --- " + DateTime.Now.ToString() + " : " + msg);
                 break;
             case LogLevel.Info:
-                Serilog.Log.Information(
-                    "INFO --- " +
-                    DateTime.Now.ToString() +
-                    " : " +
-                    msg);
+                Serilog.Log.Information("INFO --- " + DateTime.Now.ToString() + " : " + msg);
                 break;
             case LogLevel.Warning:
-                Serilog.Log.Warning(
-                    "WARN --- " +
-                    DateTime.Now.ToString() +
-                    " : " +
-                    msg);
+                Serilog.Log.Warning("WARN --- " + DateTime.Now.ToString() + " : " + msg);
                 break;
         }
     }

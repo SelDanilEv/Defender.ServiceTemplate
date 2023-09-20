@@ -1,14 +1,20 @@
-﻿using System.Text;
-using Defender.ServiceTemplate.Application.Common.Exceptions;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
-using Defender.ServiceTemplate.Application.Enums;
-using Defender.ServiceTemplate.Application.Helpers;
-using Defender.ServiceTemplate.WebUI.Filters;
-using Defender.ServiceTemplate.WebUI.Services;
+﻿using System;
+using System.Net.Http;
+using System.Text;
+using Defender.Common.Accessors;
+using Defender.Common.Errors;
+using Defender.Common.Exceptions;
+using Defender.Common.Helpers;
+using Defender.Common.Interfaces;
 using FluentValidation.AspNetCore;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -21,7 +27,7 @@ public static class ConfigureServices
         IWebHostEnvironment environment,
         IConfiguration configuration)
     {
-        services.AddSingleton<ICurrentUserService, CurrentUserService>();
+        services.AddSingleton<IAccountAccessor, AccountAccessor>();
 
         services.AddHttpContextAccessor();
 
@@ -31,9 +37,8 @@ public static class ConfigureServices
 
         services.AddSwagger();
 
-        services.AddControllers(options =>
-             options.Filters.Add<ApiExceptionFilterAttribute>())
-                 .AddFluentValidation(x => x.AutomaticValidationEnabled = false);
+        services.AddFluentValidationAutoValidation();
+
         services.AddControllers();
 
         services.Configure<ApiBehaviorOptions>(options =>
@@ -62,22 +67,23 @@ public static class ConfigureServices
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(
-                        EnvVariableResolver.GetEnvironmentVariable(EnvVariable.JwtSecret)))
+                        SecretsHelper.GetSecret(Common.Enums.Secret.JwtSecret)))
             };
         });
 
         return services;
     }
 
-    private static IServiceCollection AddSwagger(this IServiceCollection services)
+    private static IServiceCollection AddSwagger(
+        this IServiceCollection services)
     {
         services.AddSwaggerGen(options =>
         {
             options.SwaggerDoc("v1", new OpenApiInfo
             {
                 Version = "v1",
-                Title = "ServiceTemplate service",
-                Description = "Service to manage users and generate jwt token",
+                Title = "Service Template",
+                Description = "Service template",
             });
 
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
@@ -87,7 +93,7 @@ public static class ConfigureServices
                 Scheme = "Bearer",
                 BearerFormat = "JWT",
                 In = ParameterLocation.Header,
-                Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter your token in the text input below.\r\n\r\nExample: \"ey......\"",
+                Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter your token in the text input below.\r\n\r\nExample: \"1safsfsdfdfd\"",
             });
 
             options.AddSecurityRequirement(new OpenApiSecurityRequirement
@@ -109,14 +115,14 @@ public static class ConfigureServices
         return services;
     }
 
-    private static void ConfigureProblemDetails(
-        ProblemDetailsOptions options, IWebHostEnvironment environment)
+    private static void ConfigureProblemDetails(ProblemDetailsOptions options, IWebHostEnvironment environment)
     {
-        options.IncludeExceptionDetails = (ctx, ex) => environment.IsEnvironment("Development");
+        options.IncludeExceptionDetails = (ctx, ex) => environment.IsEnvironment("Development") || environment.IsEnvironment("DockerDev");
 
         options.Map<ValidationException>(exception =>
         {
             var validationProblemDetails = new ValidationProblemDetails(exception.Errors);
+            validationProblemDetails.Detail = exception.Message;
             validationProblemDetails.Status = StatusCodes.Status422UnprocessableEntity;
             return validationProblemDetails;
         });
@@ -124,18 +130,16 @@ public static class ConfigureServices
         options.Map<ForbiddenAccessException>(exception =>
         {
             var problemDetails = new ProblemDetails();
-
             problemDetails.Detail = exception.Message;
             problemDetails.Status = StatusCodes.Status403Forbidden;
             return problemDetails;
         });
 
-        options.Map<ExternalAPIException>(exception =>
+        options.Map<ServiceException>(exception =>
         {
             var problemDetails = new ProblemDetails();
-
             problemDetails.Detail = exception.Message;
-            problemDetails.Status = StatusCodes.Status500InternalServerError;
+            problemDetails.Status = StatusCodes.Status400BadRequest;
             return problemDetails;
         });
 
@@ -143,7 +147,13 @@ public static class ConfigureServices
 
         options.MapToStatusCode<HttpRequestException>(StatusCodes.Status503ServiceUnavailable);
 
-        options.MapToStatusCode<Exception>(StatusCodes.Status500InternalServerError);
+        options.Map<Exception>(exception =>
+        {
+            var problemDetails = new ProblemDetails();
+            problemDetails.Detail = ErrorCodeHelper.GetErrorCode(ErrorCode.UnhandledError);
+            problemDetails.Status = StatusCodes.Status500InternalServerError;
+            return problemDetails;
+        }); ;
     }
 
 }

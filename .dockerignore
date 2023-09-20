@@ -19,7 +19,6 @@
 **/node_modules
 **/npm-debug.log
 **/obj
-**/Logs
 **/secrets.dev.yaml
 **/values.dev.yaml
 LICENSE
