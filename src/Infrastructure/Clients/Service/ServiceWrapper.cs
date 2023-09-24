@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Defender.Common.Wrapper;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
-using Defender.ServiceTemplate.Infrastructure.Clients.ServiceClient.Generated;
+using Defender.ServiceTemplate.Infrastructure.Clients.Service.Generated;
 
-namespace Defender.ServiceTemplate.Infrastructure.Clients.ServiceClient;
+namespace Defender.ServiceTemplate.Infrastructure.Clients.Service;
 
 public class ServiceWrapper : BaseSwaggerWrapper, IServiceWrapper
 {

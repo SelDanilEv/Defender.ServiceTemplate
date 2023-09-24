@@ -1,4 +1,5 @@
-﻿using Defender.ServiceTemplate.Application.Configuration.Options;
+﻿using Defender.Common.Configuration.Exstension;
+using Defender.ServiceTemplate.Application.Configuration.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,7 +9,7 @@ public static class ServiceOptionsExtensions
 {
     public static IServiceCollection AddApplicationOptions(this IServiceCollection services, IConfiguration configuration)
     {
-        services.Configure<MongoDbOptions>(configuration.GetSection(nameof(MongoDbOptions)));
+        services.AddCommonOptions(configuration);
 
         services.Configure<ServiceOptions>(configuration.GetSection(nameof(ServiceOptions)));
 

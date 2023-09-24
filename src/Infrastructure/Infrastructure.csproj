@@ -77,4 +77,8 @@
       <Content Remove="C:\Users\dselitsky\.nuget\packages\mongodb.driver.core\2.16.1\build\..\runtimes\win\native\snappy32.dll" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Enums\" />
+    </ItemGroup>
+
 </Project>

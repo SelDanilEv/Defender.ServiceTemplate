@@ -9,21 +9,20 @@
 #pragma warning disable 3016 // Disable "CS3016 Arrays as attribute arguments is not CLS-compliant"
 #pragma warning disable 8603 // Disable "CS8603 Possible null reference return"
 
-namespace Defender.ServiceTemplate.Infrastructure.Clients.ServiceClient.Generated
+namespace Defender.ServiceTemplate.Infrastructure.Clients.Service.Generated;
+
+using System = System;
+
+public partial interface IServiceClient
 {
-    using System = System;
+}
 
-    public partial interface IServiceClient
+public partial class ServiceClient : IServiceClient
+{
+    public ServiceClient(HttpClient httpClient)
     {
     }
 
-    public partial class ServiceClient : IServiceClient
-    {
-        public ServiceClient(HttpClient httpClient)
-        {
-        }
-
-    }
 }
 
 #pragma warning restore 1591
