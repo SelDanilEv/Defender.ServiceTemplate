@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json.Serialization;
 using Defender.Common.Accessors;
+using Defender.Common.Enums;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
 using Defender.Common.Helpers;
@@ -72,7 +73,7 @@ public static class ConfigureServices
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(
                     Encoding.UTF8.GetBytes(
-                        SecretsHelper.GetSecret(Common.Enums.Secret.JwtSecret)))
+                        SecretsHelper.GetSecret(Secret.JwtSecret)))
             };
         });
 

@@ -13,11 +13,14 @@ Initialization
 
 
 Ports: 
-2400 - Local Identity Service
-2401 - Local User Management Service
-2402 - Local Notification Service
+47050 - Local Identity Service
+47051 - Local User Management Service
+47052 - Local Notification Service
+47053 - Local Portal API
+47054 - Local Portal UI
 
-2500 - Dev Identity Service
-2501 - Dev User Management Service
-2502 - Dev Notification Service
-
+49050 - Dev Identity Service
+49051 - Dev User Management Service
+49052 - Dev Notification Service
+49053 - Dev Portal API
+49054 - Dev Portal UI

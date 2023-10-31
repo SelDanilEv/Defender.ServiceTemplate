@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Defender.ServiceTemplate.Application.Common.Behaviours;
+using Defender.Common.Exstension;
 using Defender.ServiceTemplate.Application.Configuration.Exstension;
 using FluentValidation;
 using MediatR;
@@ -16,8 +16,7 @@ public static class ConfigureServices
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+        services.AddCommonPipelines();
 
         services.AddApplicationOptions(configuration);
 
