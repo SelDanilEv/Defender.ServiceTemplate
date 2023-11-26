@@ -18,8 +18,6 @@ public static class ConfigureServices
 
         services.AddCommonPipelines();
 
-        services.AddApplicationOptions(configuration);
-
         return services;
     }
 }

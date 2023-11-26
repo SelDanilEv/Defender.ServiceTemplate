@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Defender.Common.Clients.Identity;
 using Defender.Common.Clients.UserManagement;
 using Defender.Common.Wrapper;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
@@ -8,10 +9,10 @@ namespace Defender.ServiceTemplate.Infrastructure.Clients.Service;
 public class ServiceWrapper : BaseSwaggerWrapper, IServiceWrapper
 {
     private readonly IMapper _mapper;
-    private readonly IUserManagementAsServiceClient _userManagementClient;
+    private readonly IIdentityAsServiceClient _userManagementClient;
 
     public ServiceWrapper(
-        IUserManagementAsServiceClient userManagementClient,
+        IIdentityAsServiceClient userManagementClient,
         IMapper mapper)
     {
         _userManagementClient = userManagementClient;
