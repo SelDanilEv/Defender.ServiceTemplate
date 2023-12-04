@@ -51,13 +51,13 @@ public static class ConfigureServices
     private static void RegisterApiClients(IServiceCollection services, IConfiguration configuration)
     {
         services.RegisterIdentityAsServiceClient(
-            (serviceProvider, client) =>
+            async (serviceProvider, client) =>
             {
                 client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value.Url);
                 client.DefaultRequestHeaders.Authorization =
                 new AuthenticationHeaderValue(
                     "Bearer",
-                    InternalJwtHelper.GenerateInternalJWT(configuration["JwtTokenIssuer"]));
+                    await InternalJwtHelper.GenerateInternalJWTAsync(configuration["JwtTokenIssuer"]));
             });
 
         services.RegisterIdentityClient(

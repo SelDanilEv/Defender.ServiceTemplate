@@ -2,14 +2,11 @@
 using System.Net.Http;
 using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-using Defender.Common.Accessors;
 using Defender.Common.Enums;
 using Defender.Common.Errors;
 using Defender.Common.Exceptions;
 using Defender.Common.Exstension;
 using Defender.Common.Helpers;
-using Defender.Common.Interfaces;
 using Defender.ServiceTemplate.Application.Configuration.Exstension;
 using FluentValidation.AspNetCore;
 using Hellang.Middleware.ProblemDetails;
@@ -27,22 +24,20 @@ namespace Defender.ServiceTemplate.WebUI;
 
 public static class ConfigureServices
 {
-    public static async Task<IServiceCollection> AddWebUIServices(
+    public static IServiceCollection AddWebUIServices(
         this IServiceCollection services,
         IWebHostEnvironment environment,
         IConfiguration configuration)
     {
-        services.AddSingleton<IAccountAccessor, AccountAccessor>();
+        services.AddCommonServices(configuration);
 
         services.AddApplicationOptions(configuration);
-
-        services.AddSecretAccessor();
 
         services.AddHttpContextAccessor();
 
         services.AddProblemDetails(options => ConfigureProblemDetails(options, environment));
 
-        await services.AddJwtAuthentication(configuration);
+        services.AddJwtAuthentication(configuration);
 
         services.AddSwagger();
 
@@ -60,17 +55,15 @@ public static class ConfigureServices
         return services;
     }
 
-    private static async Task<IServiceCollection> AddJwtAuthentication(
+    private static IServiceCollection AddJwtAuthentication(
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        var jwtSecret = await SecretsHelper.GetSecretAsync(Secret.JwtSecret);
-
         services.AddAuthentication(auth =>
         {
             auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
             auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
+        }).AddJwtBearer(async options =>
         {
             options.RequireHttpsMetadata = false;
             options.SaveToken = true;
@@ -81,7 +74,7 @@ public static class ConfigureServices
                 ValidIssuer = configuration["JwtTokenIssuer"],
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = new SymmetricSecurityKey(
-                    Encoding.UTF8.GetBytes(jwtSecret))
+                    Encoding.UTF8.GetBytes(await SecretsHelper.GetSecretAsync(Secret.JwtSecret)))
             };
         });
 

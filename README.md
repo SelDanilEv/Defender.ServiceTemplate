@@ -19,6 +19,7 @@ Ports:
 47053 - Local Portal API
 47054 - Local Portal UI
 47055 - Local Walutomat Helper Service
+47056 - Local Secret Management Service
 
 49050 - Dev Identity Service
 49051 - Dev User Management Service
@@ -26,3 +27,4 @@ Ports:
 49053 - Dev Portal API
 49054 - Dev Portal UI
 49055 - Dev Walutomat Helper Service
+49056 - Dev Secret Management Service
