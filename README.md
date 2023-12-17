@@ -30,3 +30,6 @@ Ports:
 49055 - Dev Walutomat Helper Service
 49056 - Dev Secret Management Service
 49057 - Dev Job Scheduler Service
+
+
+

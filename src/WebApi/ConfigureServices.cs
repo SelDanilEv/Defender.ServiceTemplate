@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
 namespace Defender.ServiceTemplate.WebUI;
 
@@ -124,7 +125,7 @@ public static class ConfigureServices
 
     private static void ConfigureProblemDetails(ProblemDetailsOptions options, IWebHostEnvironment environment)
     {
-        options.IncludeExceptionDetails = (ctx, ex) => environment.IsEnvironment("Development") || environment.IsEnvironment("DockerDev");
+        options.IncludeExceptionDetails = (ctx, ex) => environment.IsLocalOrDevelopment();
 
         options.Map<ValidationException>(exception =>
         {
