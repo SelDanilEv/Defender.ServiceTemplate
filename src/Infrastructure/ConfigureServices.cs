@@ -15,43 +15,53 @@ namespace Defender.ServiceTemplate.Infrastructure;
 
 public static class ConfigureServices
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(
+        this IServiceCollection services,
+        IConfiguration configuration)
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        RegisterServices(services);
-
-        RegisterRepositories(services);
-
-        RegisterApiClients(services, configuration);
-
-        RegisterClientWrappers(services);
+        services
+            .RegisterServices()
+            .RegisterRepositories()
+            .RegisterApiClients(configuration)
+            .RegisterClientWrappers();
 
         return services;
     }
 
-    private static void RegisterClientWrappers(IServiceCollection services)
+    private static IServiceCollection RegisterClientWrappers(this IServiceCollection services)
     {
         services.AddTransient<IServiceWrapper, ServiceWrapper>();
+
+        return services;
     }
 
-    private static void RegisterServices(IServiceCollection services)
+    private static IServiceCollection RegisterServices(this IServiceCollection services)
     {
         services.AddTransient<IService, Service>();
+
+        return services;
     }
 
-    private static void RegisterRepositories(IServiceCollection services)
+    private static IServiceCollection RegisterRepositories(this IServiceCollection services)
     {
         services.AddSingleton<IDomainModelRepository, DomainModelRepository>();
+
+        return services;
     }
 
-    private static void RegisterApiClients(IServiceCollection services, IConfiguration configuration)
+    private static IServiceCollection RegisterApiClients(
+        this IServiceCollection services, 
+        IConfiguration configuration)
     {
         services.RegisterIdentityClient(
             (serviceProvider, client) =>
             {
                 client.BaseAddress = new Uri(serviceProvider.GetRequiredService<IOptions<ServiceOptions>>().Value.Url);
             });
+
+        return services;
     }
 
 }
