@@ -25,6 +25,7 @@ Ports:
 - 47056 - Local Secret Management Service
 - 47057 - Local Job Scheduler Service
 - 47058 - Local Wallet Service
+- 47059 - Local General Testing Service
 
 2. Dev
 
@@ -36,4 +37,5 @@ Ports:
 - 49055 - Dev Walutomat Helper Service
 - 49056 - Dev Secret Management Service
 - 49057 - Dev Job Scheduler Service
-- 49058 - Local Wallet Service
+- 49058 - Dev Wallet Service
+- 49059 - Dev General Testing Service
