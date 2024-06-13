@@ -2,6 +2,7 @@
 using Defender.Common.Interfaces;
 using Defender.ServiceTemplate.Application.Common.Interfaces;
 using FluentValidation;
+using Defender.Common.Extension;
 using MediatR;
 
 namespace Defender.ServiceTemplate.Application.Modules.Module.Commands;
@@ -16,24 +17,16 @@ public sealed class ModuleCommandValidator : AbstractValidator<ModuleCommand>
     public ModuleCommandValidator()
     {
         RuleFor(s => s.DoModule)
-                  .NotEmpty().WithMessage(ErrorCodeHelper.GetErrorCode(ErrorCode.VL_InvalidRequest));
+            .NotEmpty()
+            .WithMessage(ErrorCode.VL_InvalidRequest);
     }
 }
 
-public sealed class ModuleCommandHandler : IRequestHandler<ModuleCommand, Unit>
-{
-    private readonly IAccountAccessor _accountAccessor;
-    private readonly IService _accountManagementService;
-
-    public ModuleCommandHandler(
+public sealed class ModuleCommandHandler(
         IAccountAccessor accountAccessor,
-        IService accountManagementService
-        )
-    {
-        _accountAccessor = accountAccessor;
-        _accountManagementService = accountManagementService;
-    }
-
+        IService accountManagementService) 
+    : IRequestHandler<ModuleCommand, Unit>
+{
     public async Task<Unit> Handle(ModuleCommand request, CancellationToken cancellationToken)
     {
         return Unit.Value;

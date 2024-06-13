@@ -26,6 +26,7 @@ Ports:
 - 47057 - Local Job Scheduler Service
 - 47058 - Local Wallet Service
 - 47059 - Local General Testing Service
+- 47060 - Local Risk Games Service
 
 2. Dev
 
@@ -39,3 +40,4 @@ Ports:
 - 49057 - Dev Job Scheduler Service
 - 49058 - Dev Wallet Service
 - 49059 - Dev General Testing Service
+- 49060 - Dev Risk Games Service

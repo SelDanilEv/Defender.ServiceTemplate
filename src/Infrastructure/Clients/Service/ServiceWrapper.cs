@@ -5,19 +5,11 @@ using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
 
 namespace Defender.ServiceTemplate.Infrastructure.Clients.Service;
 
-public class ServiceWrapper : BaseSwaggerWrapper, IServiceWrapper
-{
-    private readonly IMapper _mapper;
-    private readonly IIdentityServiceClient _service;
-
-    public ServiceWrapper(
+public class ServiceWrapper(
         IIdentityServiceClient service,
-        IMapper mapper)
-    {
-        _service = service;
-        _mapper = mapper;
-    }
-
+        IMapper mapper) 
+    : BaseSwaggerWrapper, IServiceWrapper
+{
     public Task DoWrap()
     {
         //var createCommand = new CreateUserCommand()

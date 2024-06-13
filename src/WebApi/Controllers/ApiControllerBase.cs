@@ -3,37 +3,28 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Defender.ServiceTemplate.WebUI.Controllers;
+namespace Defender.ServiceTemplate.WebApi.Controllers;
 
 [Route("api/[controller]")]
-public class BaseApiController : ControllerBase
+public class BaseApiController(IMediator mediator, IMapper mapper) : ControllerBase
 {
-    protected readonly IMediator Mediator;
-    protected readonly IMapper Mapper;
-
-    public BaseApiController(IMediator mediator, IMapper mapper)
-    {
-        Mediator = mediator;
-        Mapper = mapper;
-    }
-
     protected async Task<TResult> ProcessApiCallAsync<TRequest, TResult>(TRequest request)
     {
-        var response = await Mediator.Send(request);
+        var response = await mediator.Send(request);
 
-        var result = Mapper.Map<TResult>(response);
+        var result = mapper.Map<TResult>(response);
 
         return result;
     }
 
     protected async Task ProcessApiCallAsync<TRequest>(TRequest request)
     {
-        await Mediator.Send(request);
+        await mediator.Send(request);
     }
 
     protected async Task<TResult> ProcessApiCallWithoutMappingAsync<TRequest, TResult>(TRequest request)
     {
-        var response = await Mediator.Send(request);
+        var response = await mediator.Send(request);
 
         return (TResult)response;
     }

@@ -1,4 +1,4 @@
-﻿namespace Defender.ServiceTemplate.Infrastructure.Helpers;
+﻿namespace Defender.ServiceTemplate.Application.Helpers;
 
 public class Helper
 {

@@ -1,12 +1,10 @@
 ﻿using System.Reflection;
 using Defender.Common.Clients.Identity;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
 using Defender.ServiceTemplate.Application.Configuration.Options;
 using Defender.ServiceTemplate.Infrastructure.Clients.Service;
 using Defender.ServiceTemplate.Infrastructure.Repositories.DomainModels;
-using Defender.ServiceTemplate.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -22,7 +20,6 @@ public static class ConfigureServices
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services
-            .RegisterServices()
             .RegisterRepositories()
             .RegisterApiClients(configuration)
             .RegisterClientWrappers();
@@ -33,13 +30,6 @@ public static class ConfigureServices
     private static IServiceCollection RegisterClientWrappers(this IServiceCollection services)
     {
         services.AddTransient<IServiceWrapper, ServiceWrapper>();
-
-        return services;
-    }
-
-    private static IServiceCollection RegisterServices(this IServiceCollection services)
-    {
-        services.AddTransient<IService, Service>();
 
         return services;
     }
