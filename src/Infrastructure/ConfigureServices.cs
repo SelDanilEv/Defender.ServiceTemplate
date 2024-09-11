@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using AutoMapper;
 using Defender.Common.Clients.Identity;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
 using Defender.ServiceTemplate.Application.Common.Interfaces.Wrapper;
@@ -17,7 +18,7 @@ public static class ConfigureServices
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.AddAutoMapper(Assembly.GetExecutingAssembly());
+        services.AddAutoMapper(cfg => cfg.AddMaps(Assembly.GetExecutingAssembly()));
 
         services
             .RegisterRepositories()
