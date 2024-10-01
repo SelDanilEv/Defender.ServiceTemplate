@@ -6,11 +6,10 @@ Initialization
 2. Rename {ServiceTemplate} to ServiceName
 3. Rename {Service Template} to Service Name
 4. Rename {service-template} to service-name
-5. Update port in docker deployment file
-6. Update port in launchSettings
-7. Update description in Swagger UI
-8. Set as startup project WebUI
-9. Update README.md
+5. Update port in launchSettings
+6. Update description in Swagger UI
+7. Set as startup project WebUI
+8. Update README.md
 
 Ports:
 
@@ -27,6 +26,7 @@ Ports:
 - 47058 - Local Wallet Service
 - 47059 - Local General Testing Service
 - 47060 - Local Risk Games Service
+- 47061 - Local Budget Tracker Service
 
 2. Dev
 
@@ -41,3 +41,4 @@ Ports:
 - 49058 - Dev Wallet Service
 - 49059 - Dev General Testing Service
 - 49060 - Dev Risk Games Service
+- 49061 - Dev Budget Tracker Service
