@@ -7,7 +7,7 @@ namespace Defender.ServiceTemplate.Infrastructure.Clients.Service;
 
 public class ServiceWrapper(
         IIdentityServiceClient service,
-        IMapper mapper) 
+        IMapper mapper)
     : BaseSwaggerWrapper, IServiceWrapper
 {
     public Task DoWrap()

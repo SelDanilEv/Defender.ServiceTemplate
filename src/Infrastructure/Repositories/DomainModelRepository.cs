@@ -4,7 +4,7 @@ using Defender.ServiceTemplate.Application.Common.Interfaces.Repositories;
 using Defender.ServiceTemplate.Domain.Entities;
 using Microsoft.Extensions.Options;
 
-namespace Defender.ServiceTemplate.Infrastructure.Repositories.DomainModels;
+namespace Defender.ServiceTemplate.Infrastructure.Repositories;
 
 public class DomainModelRepository : BaseMongoRepository<DomainModel>, IDomainModelRepository
 {

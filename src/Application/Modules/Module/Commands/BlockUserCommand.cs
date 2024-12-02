@@ -1,8 +1,8 @@
 ﻿using Defender.Common.Errors;
-using Defender.Common.Interfaces;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
-using FluentValidation;
 using Defender.Common.Extension;
+using Defender.Common.Interfaces;
+using Defender.ServiceTemplate.Application.Common.Interfaces.Services;
+using FluentValidation;
 using MediatR;
 
 namespace Defender.ServiceTemplate.Application.Modules.Module.Commands;
@@ -24,7 +24,7 @@ public sealed class ModuleCommandValidator : AbstractValidator<ModuleCommand>
 
 public sealed class ModuleCommandHandler(
         IAccountAccessor accountAccessor,
-        IService accountManagementService) 
+        IService accountManagementService)
     : IRequestHandler<ModuleCommand, Unit>
 {
     public async Task<Unit> Handle(ModuleCommand request, CancellationToken cancellationToken)

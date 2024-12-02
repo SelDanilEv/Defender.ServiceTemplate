@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using Microsoft.Extensions.DependencyInjection;
+using Defender.ServiceTemplate.Application.Common.Interfaces.Services;
+using Defender.ServiceTemplate.Application.Services;
 using FluentValidation;
 using Microsoft.Extensions.Configuration;
-using Defender.ServiceTemplate.Application.Common.Interfaces;
-using Defender.ServiceTemplate.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Defender.ServiceTemplate.Application;
 

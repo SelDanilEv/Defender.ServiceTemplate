@@ -1,13 +1,13 @@
-﻿using AutoMapper;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using AutoMapper;
 using Defender.Common.Attributes;
 using Defender.Common.Consts;
 using Defender.ServiceTemplate.Application.Modules.Module.Commands;
+using MediatR;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Defender.ServiceTemplate.WebApi.Controllers.V1;
+namespace WebApi.Controllers.V1;
 
 public class AccountController : BaseApiController
 {

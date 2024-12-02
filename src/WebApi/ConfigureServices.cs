@@ -20,7 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProblemDetailsOptions = Hellang.Middleware.ProblemDetails.ProblemDetailsOptions;
 
-namespace Defender.ServiceTemplate.WebApi;
+namespace WebApi;
 
 public static class ConfigureServices
 {
@@ -161,7 +161,7 @@ public static class ConfigureServices
             problemDetails.Detail = ErrorCodeHelper.GetErrorCode(ErrorCode.UnhandledError);
             problemDetails.Status = StatusCodes.Status500InternalServerError;
             return problemDetails;
-        }); ;
+        });
     }
 
 }
